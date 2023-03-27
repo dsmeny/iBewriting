@@ -13,6 +13,7 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+    open: true,
   },
   middleware: (app) => {
     app.use(backend);
