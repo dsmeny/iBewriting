@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "../components/Card";
 import useClientDB from "../util/clientDB/useClientDB";
+import Form from "../components/Form";
 
 const Home = () => {
   const [dbState, setDbState] = useState(null);
@@ -18,16 +19,16 @@ const Home = () => {
     getMessages();
   }, []);
 
-  if (!dbState || dbState.messages === undefined) {
-    return <div>hola</div>;
-  }
-
   return (
     <div className="content">
-      {dbState.messages &&
+      <Form />
+      {dbState && dbState.messages ? (
         dbState.messages.map((message, index) => (
           <Card message={message} id={dbState.allKeys[index]} />
-        ))}
+        ))
+      ) : (
+        <div>No messages found</div>
+      )}
     </div>
   );
 };
