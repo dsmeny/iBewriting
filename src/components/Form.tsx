@@ -1,18 +1,8 @@
-import { FormEvent } from "react";
+import { get, set, del, clear, keys, values } from "../util/clientDB/_cliDB.js";
 
 import Button from "./Button";
-import useClientDB from "../util/clientDB/useClientDB";
 
-const Form = () => {
-  const { state, setDB, getKey, delDB, clearDB, getKeys, getValues } =
-    useClientDB();
-
-  function submitHandler(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const name = (event.target as HTMLFormElement).elements["name"].value;
-    console.log(name);
-  }
-
+const Form = ({ submitHandler }) => {
   return (
     <form id="form1" onSubmit={submitHandler}>
       <input id="inputField" type="text" name="name" className="form-input" />

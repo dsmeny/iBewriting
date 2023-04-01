@@ -28,10 +28,12 @@ export const clear = async () => {
 
 export const keys = async () => {
   const db = await doDatabaseStuff();
-  return await db.getAllKeys("messages");
+  const keys = await db.getAllKeys("messages");
+  return keys;
 };
 
 export const values = async () => {
   const db = await doDatabaseStuff();
-  return await db.getAll("messages");
+  const messages = await db.getAll("messages");
+  return messages;
 };

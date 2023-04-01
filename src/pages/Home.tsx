@@ -1,34 +1,51 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import Card from "../components/Card";
-import useClientDB from "../util/clientDB/useClientDB";
+import { v4 as uuid } from "uuid";
+import { get, set, del, clear, keys, values } from "../util/clientDB/_cliDB";
 import Form from "../components/Form";
 
 const Home = () => {
   const [dbState, setDbState] = useState(null);
-
-  const { state, setDB, getKey, delDB, clearDB, getKeys, getValues } =
-    useClientDB();
+  const [eventTrigger, setEventTrigger] = useState(false);
 
   useEffect(() => {
-    const getMessages = async () => {
-      const [messages, allKeys] = await Promise.all([getValues(), getKeys()]);
+    Promise.all([keys(), values()]).then((data) => {
+      const [allKeys, messages] = data;
+      setDbState({ allKeys, messages });
+    });
+  }, [eventTrigger]);
 
-      setDbState({ messages, allKeys });
-    };
+  function submitHandler(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const name = (event.target as HTMLFormElement).elements["name"].value;
+    set(name, uuid(name));
+    setEventTrigger(() => !eventTrigger);
+  }
 
-    getMessages();
-  }, []);
+  function deleteHandler(id) {
+    del(id);
+    setEventTrigger(() => !eventTrigger);
+  }
 
   return (
     <div className="content">
-      <Form />
-      {dbState && dbState.messages ? (
-        dbState.messages.map((message, index) => (
-          <Card message={message} id={dbState.allKeys[index]} />
-        ))
-      ) : (
-        <div>No messages found</div>
-      )}
+      <div className="sidebar">
+        <Form submitHandler={submitHandler} />
+      </div>
+      <div className="content-inner">
+        {dbState && dbState.messages ? (
+          dbState.messages.map((message, index) => (
+            <Card
+              message={message}
+              id={dbState.allKeys[index]}
+              deleteHandler={deleteHandler}
+              key={dbState.allKeys[index]}
+            />
+          ))
+        ) : (
+          <div>No messages found</div>
+        )}
+      </div>
     </div>
   );
 };
