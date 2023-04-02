@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { FcExpand } from "react-icons/fc";
+import { GrClose } from "react-icons/gr";
 import Button from "./Button";
 
 const Card = ({ id, message, deleteHandler }) => {
@@ -16,7 +17,7 @@ const Card = ({ id, message, deleteHandler }) => {
         setExpandable(true);
       }
     }
-  }, []);
+  }, [expandable]);
 
   const deleteCard = () => {
     deleteHandler(id);
@@ -24,17 +25,24 @@ const Card = ({ id, message, deleteHandler }) => {
 
   const expandHandler = () => {
     // setExpandable(false);
-    const target = textRef.current;
-    (target as HTMLElement).classList.add("readable");
+
+    const target = textRef.current as HTMLElement;
+    if (target.classList.contains("readable")) {
+      target.classList.remove("readable");
+      return;
+    }
+    target.classList.add("readable");
   };
 
   return (
     <div className="outer-c">
       <div className="inner-c">
         <Button text={"del"} id={id} onClick={deleteCard} />
-        <p className="cutoff-text" ref={textRef}>
-          {message}
-        </p>
+        <div className="cutoff-text" ref={textRef}>
+          <GrClose />
+          <p>{message}</p>
+        </div>
+
         {expandable && (
           <FcExpand className="expandable-icon" onClick={expandHandler} />
         )}

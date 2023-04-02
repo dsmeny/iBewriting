@@ -5,15 +5,19 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  root: path.resolve(__dirname, "src"),
   server: {
     proxy: {
       "/api": {
-        tgarget: "http://localhost:3002",
+        target: "http://localhost:3002",
         changeOrigin: true,
       },
     },
     open: true,
+  },
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+    sourcemap: true,
   },
   middleware: (app) => {
     app.use(backend);
