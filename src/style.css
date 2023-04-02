@@ -26,6 +26,7 @@ body {
   gap: 1rem;
   margin-top: 30px;
   flex: 2;
+  position: relative;
 }
 
 .outer-c {
@@ -36,11 +37,39 @@ body {
 .inner-c {
   display: flex;
   align-items: self-end;
-  justify-content: space-between;
-  gap: 2rem;
+  gap: 1rem;
   margin: 20px;
   flex-direction: column;
   height: 88%;
+}
+
+.inner-c p {
+  line-height: 1.6rem;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.expandable-icon {
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.readable {
+  position: absolute;
+  z-index: 99999999;
+  background-color: white;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+}
+
+.cutoff-text {
+  --max-lines: 5;
+
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
 }
 
 .form-input {
