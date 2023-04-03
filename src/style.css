@@ -6,6 +6,9 @@
 
 #root {
   --bg-card-color: #fbfbfb;
+  --icon-color: #b0b7b0;
+  --shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  --text-color: #454040;
 }
 
 body {
@@ -34,24 +37,33 @@ body {
 }
 
 .outer-c {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: var(--shadow);
   border-radius: 10px;
 }
 
 .inner-c {
   display: flex;
-  align-items: self-end;
   gap: 1rem;
   margin: 20px;
   flex-direction: column;
   height: 88%;
+  align-items: flex-end;
 }
 
-.inner-c p {
-  line-height: 1.6rem;
+.inner-c div {
+  line-height: 1.7rem;
   width: 100%;
   margin-bottom: 10px;
-  padding: 10px;
+}
+
+.inner-c-close {
+  font-size: 1.4rem;
+  opacity: 0.6;
+}
+
+.icon-group-styling {
+  font-size: 1.4rem;
+  color: var(--icon-color);
 }
 
 .expandable-icon {
@@ -66,7 +78,15 @@ body {
   left: 0px;
   top: 0px;
   height: 100vh;
+  padding: 20px;
   overflow: visible !important;
+}
+
+.icon-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
 }
 
 .cutoff-text {
@@ -76,6 +96,17 @@ body {
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--max-lines);
+}
+
+.cutoff-text div {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.cutoff-text p {
+  color: var(--text-color);
 }
 
 .form-input {

@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { FcExpand } from "react-icons/fc";
 import { GrClose } from "react-icons/gr";
-import Button from "./Button";
+import { IoMdTrash, IoMdCreate } from "react-icons/io";
 
 const Card = ({ id, message, deleteHandler }) => {
   const [expandable, setExpandable] = useState(false);
+  const [doRetract, setDoRetract] = useState(false);
 
   const textRef = useRef();
 
@@ -17,29 +18,36 @@ const Card = ({ id, message, deleteHandler }) => {
         setExpandable(true);
       }
     }
-  }, [expandable]);
+  }, []);
 
   const deleteCard = () => {
     deleteHandler(id);
   };
 
   const expandHandler = () => {
-    // setExpandable(false);
-
     const target = textRef.current as HTMLElement;
     if (target.classList.contains("readable")) {
       target.classList.remove("readable");
+      setDoRetract(false);
       return;
     }
+    setDoRetract(true);
     target.classList.add("readable");
   };
 
   return (
     <div className="outer-c">
       <div className="inner-c">
-        <Button text={"del"} id={id} onClick={deleteCard} />
+        <div className="icon-group">
+          <IoMdCreate className="icon-group-styling" />
+          <IoMdTrash className="icon-group-styling" onClick={deleteCard} />
+        </div>
         <div className="cutoff-text" ref={textRef}>
-          <GrClose />
+          {doRetract && (
+            <div>
+              <GrClose className="inner-c-close" onClick={expandHandler} />
+            </div>
+          )}
           <p>{message}</p>
         </div>
 
