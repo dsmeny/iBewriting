@@ -27,6 +27,10 @@ const Home = () => {
     setEventTrigger(() => !eventTrigger);
   }
 
+  function editHandler(id, updatedMsg) {
+    set(updatedMsg, id);
+  }
+
   return (
     <div className="content">
       <div className="sidebar">
@@ -39,6 +43,7 @@ const Home = () => {
               message={message}
               id={dbState.allKeys[index]}
               deleteHandler={deleteHandler}
+              editHandler={editHandler}
               key={dbState.allKeys[index]}
             />
           ))

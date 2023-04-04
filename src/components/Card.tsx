@@ -3,21 +3,28 @@ import { FcExpand } from "react-icons/fc";
 import { GrClose } from "react-icons/gr";
 import { IoMdTrash, IoMdCreate } from "react-icons/io";
 
-const Card = ({ id, message, deleteHandler }) => {
+const Card = ({ id, message, deleteHandler, editHandler }) => {
   const [expandable, setExpandable] = useState(false);
   const [doRetract, setDoRetract] = useState(false);
   const [doEdit, setDoEdit] = useState(false);
 
   const textRef = useRef();
+  const messageRef = useRef();
 
   useEffect(() => {
-    const target = textRef.current;
+    const target = textRef.current as HTMLElement;
+    const message_ = messageRef.current as HTMLElement;
+
     if (target) {
-      const clientHt = (target as HTMLElement).clientHeight;
-      const scrollHt = (target as HTMLElement).scrollHeight;
+      const clientHt = target.clientHeight;
+      const scrollHt = target.scrollHeight;
       if (scrollHt > clientHt) {
         setExpandable(true);
       }
+    }
+
+    if (!doEdit) {
+      editHandler(id, message_.textContent);
     }
   }, [doEdit]);
 
@@ -27,6 +34,7 @@ const Card = ({ id, message, deleteHandler }) => {
 
   const editCard = () => {
     const target = textRef.current as HTMLElement;
+
     setDoEdit((prev) => !prev);
     if (expandable) {
       target.classList.add("readable");
@@ -63,7 +71,9 @@ const Card = ({ id, message, deleteHandler }) => {
               />
             </div>
           )}
-          <p contentEditable={doEdit}>{message}</p>
+          <p contentEditable={doEdit} ref={messageRef}>
+            {message}
+          </p>
         </div>
 
         {expandable && (
