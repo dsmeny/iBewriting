@@ -6,6 +6,7 @@ import { IoMdTrash, IoMdCreate } from "react-icons/io";
 const Card = ({ id, message, deleteHandler }) => {
   const [expandable, setExpandable] = useState(false);
   const [doRetract, setDoRetract] = useState(false);
+  const [doEdit, setDoEdit] = useState(false);
 
   const textRef = useRef();
 
@@ -18,16 +19,26 @@ const Card = ({ id, message, deleteHandler }) => {
         setExpandable(true);
       }
     }
-  }, []);
+  }, [doEdit]);
 
   const deleteCard = () => {
     deleteHandler(id);
+  };
+
+  const editCard = () => {
+    const target = textRef.current as HTMLElement;
+    setDoEdit((prev) => !prev);
+    if (expandable) {
+      target.classList.add("readable");
+      setDoRetract(true);
+    }
   };
 
   const expandHandler = () => {
     const target = textRef.current as HTMLElement;
     if (target.classList.contains("readable")) {
       target.classList.remove("readable");
+      setDoEdit((prev) => !prev);
       setDoRetract(false);
       return;
     }
@@ -39,16 +50,20 @@ const Card = ({ id, message, deleteHandler }) => {
     <div className="outer-c">
       <div className="inner-c">
         <div className="icon-group">
-          <IoMdCreate className="icon-group-styling" />
+          <IoMdCreate className="icon-group-styling" onClick={editCard} />
           <IoMdTrash className="icon-group-styling" onClick={deleteCard} />
         </div>
         <div className="cutoff-text" ref={textRef}>
           {doRetract && (
-            <div>
-              <GrClose className="inner-c-close" onClick={expandHandler} />
+            <div className="icon-group">
+              <IoMdCreate className="icon-group-styling" onClick={editCard} />
+              <GrClose
+                className="inner-c-close icon-group-styling"
+                onClick={expandHandler}
+              />
             </div>
           )}
-          <p>{message}</p>
+          <p contentEditable={doEdit}>{message}</p>
         </div>
 
         {expandable && (
