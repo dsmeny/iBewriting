@@ -8,9 +8,13 @@ export const submitHandler = (
   eventTrigger
 ) => {
   event.preventDefault();
-  const name = (event.target as HTMLFormElement).elements["name"].value;
+  const target = (event.target as HTMLFormElement).elements["name"];
+  const name = target.value;
   set(name, uuid(name));
   setEventTrigger(() => !eventTrigger);
+  console.dir(target);
+  target.value = "";
+  target.focus();
 };
 
 export const deleteHandler = (id, setEventTrigger, eventTrigger) => {
