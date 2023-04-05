@@ -12,7 +12,7 @@ export const submitHandler = (
   const name = target.value;
   set(name, uuid(name));
   setEventTrigger(() => !eventTrigger);
-  console.dir(target);
+
   target.value = "";
   target.focus();
 };
