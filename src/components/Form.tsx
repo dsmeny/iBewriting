@@ -9,6 +9,7 @@ const Form = ({ submitHandler }) => {
         name="name"
         className="form-input"
         autoFocus
+        required
       />
       <Button type="submit" className="form-btn" text="submit" />
     </form>
