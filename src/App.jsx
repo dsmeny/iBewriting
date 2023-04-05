@@ -1,10 +1,16 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
-import logo from "../public/logo.jpeg";
+import logo from "/logo.jpeg";
 import Button from "./components/Button";
+import { clear } from "./util/clientDB/_cliDB";
 
 const App = () => {
+  const clickHandler = () => {
+    clear();
+    window.location.reload();
+  };
+
   return (
     <BrowserRouter>
       <header className="head">
@@ -14,7 +20,7 @@ const App = () => {
           </Link>
         </div>
         <div>
-          <Button text="clear" />
+          <Button text="clear" onClick={clickHandler} />
         </div>
       </header>
       <Routes>

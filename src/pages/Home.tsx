@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from "react";
 import Card from "../components/Card";
 import { v4 as uuid } from "uuid";
-import { get, set, del, clear, keys, values } from "../util/clientDB/_cliDB";
+import { set, del, keys, values } from "../util/clientDB/_cliDB";
 import Form from "../components/Form";
 
 const Home = () => {
