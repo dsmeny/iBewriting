@@ -1,7 +1,7 @@
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect } from "react";
 import Card from "../components/Card";
-import { v4 as uuid } from "uuid";
-import { set, del, keys, values } from "../util/clientDB/_cliDB";
+import { submitHandler, deleteHandler, editHandler } from "../util/_home";
+import { keys, values } from "../util/_cliDB";
 import Form from "../components/Form";
 
 const Home = () => {
@@ -15,26 +15,14 @@ const Home = () => {
     });
   }, [eventTrigger]);
 
-  function submitHandler(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const name = (event.target as HTMLFormElement).elements["name"].value;
-    set(name, uuid(name));
-    setEventTrigger(() => !eventTrigger);
-  }
-
-  function deleteHandler(id) {
-    del(id);
-    setEventTrigger(() => !eventTrigger);
-  }
-
-  function editHandler(id, updatedMsg) {
-    set(updatedMsg, id);
-  }
-
   return (
     <div className="content">
       <div className="sidebar">
-        <Form submitHandler={submitHandler} />
+        <Form
+          submitHandler={(event) =>
+            submitHandler(event, setEventTrigger, eventTrigger)
+          }
+        />
       </div>
       <div className="content-inner">
         {dbState && dbState.messages ? (
@@ -42,7 +30,9 @@ const Home = () => {
             <Card
               message={message}
               id={dbState.allKeys[index]}
-              deleteHandler={deleteHandler}
+              deleteHandler={(id) =>
+                deleteHandler(id, setEventTrigger, eventTrigger)
+              }
               editHandler={editHandler}
               key={dbState.allKeys[index]}
             />
