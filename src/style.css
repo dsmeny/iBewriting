@@ -6,6 +6,7 @@
 
 #root {
   --bg-card-color: #fbfbfb;
+  --bg-nav-color: #2567b5;
   --icon-color: #b0b7b0;
   --shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   --text-color: #454040;
@@ -15,8 +16,14 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#root {
-  padding: 10px;
+.head {
+  height: 65px;
+  background-color: var(--bg-nav-color);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
 }
 
 .content {
