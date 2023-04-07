@@ -90,6 +90,11 @@ body {
   overflow: visible !important;
 }
 
+.willEdit {
+  border: 2px solid rgb(129, 226, 129);
+  border-radius: 5px;
+}
+
 .icon-group {
   display: flex;
   align-items: center;
@@ -113,8 +118,12 @@ body {
   margin-bottom: 20px;
 }
 
-.cutoff-text p {
+.cutoff-text-p {
   color: var(--text-color);
+}
+
+.cutoff-text-p:focus {
+  outline: none;
 }
 
 textarea {

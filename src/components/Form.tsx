@@ -20,8 +20,8 @@ const Form = ({ submitHandler }) => {
     const scrollHt = inputRef.current as HTMLFormElement;
     const letterCount = scrollHt.value.length;
 
-    if (letterCount > 200 && scrollHt.rows <= 12) {
-      scrollHt.rows = 12;
+    if (letterCount > 48 && scrollHt.rows <= 8) {
+      scrollHt.rows = 8;
     }
   };
 

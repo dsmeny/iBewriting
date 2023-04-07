@@ -20,12 +20,14 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
   useEffect(() => {
     const target = textRef.current as HTMLElement;
     const message_ = messageRef.current as HTMLElement;
+    message_.focus();
 
     if (target) {
       const clientHt = target.clientHeight;
       const scrollHt = target.scrollHeight;
       if (scrollHt > clientHt) {
         setExpandable(true);
+        message_.focus();
       }
     }
 
@@ -40,6 +42,12 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
 
   const editCard = () => {
     const target = textRef.current as HTMLElement;
+
+    target.classList.add("willEdit");
+
+    if (doEdit) {
+      target.classList.remove("willEdit");
+    }
 
     setDoEdit((prev) => !prev);
     if (expandable) {
@@ -86,7 +94,11 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
               />
             </div>
           )}
-          <p contentEditable={doEdit} ref={messageRef}>
+          <p
+            className="cutoff-text-p"
+            contentEditable={doEdit}
+            ref={messageRef}
+          >
             {message}
           </p>
         </div>
