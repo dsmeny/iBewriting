@@ -4,6 +4,7 @@ import { BsSend } from "react-icons/bs";
 const Form = ({ submitHandler }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [boxHt, setBoxHt] = useState(40);
+
   const inputRef = useRef();
 
   const onFormSubmit = (e) => {
@@ -12,7 +13,7 @@ const Form = ({ submitHandler }) => {
     e.preventDefault();
     submitHandler(e);
     setIsClicked(true);
-    scrollHt.rows = 4;
+    scrollHt.rows = 1;
   };
 
   const changeHandler = () => {
