@@ -7,7 +7,6 @@ export const submitHandler = (
   setEventTrigger,
   eventTrigger
 ) => {
-  event.preventDefault();
   const target = (event.target as HTMLFormElement).elements["name"];
   const name = target.value;
   set(name, uuid(name));
