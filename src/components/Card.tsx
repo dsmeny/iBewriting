@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, CSSProperties } from "react";
 import { FcExpand } from "react-icons/fc";
 import { GrClose } from "react-icons/gr";
-import { IoMdTrash, IoMdCreate } from "react-icons/io";
+import { IoMdTrash, IoMdCreate, IoMdCopy } from "react-icons/io";
 
 const Card = ({ id, message, deleteHandler, editHandler }) => {
   const [expandable, setExpandable] = useState(false);
@@ -56,7 +56,7 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
     }
   };
 
-  const expandHandler = () => {
+  const expandCard = () => {
     const target = textRef.current as HTMLElement;
     if (target.classList.contains("readable")) {
       target.classList.remove("readable");
@@ -69,10 +69,16 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
     target.classList.add("readable");
   };
 
+  const copyCard = async () => {
+    const message_ = (messageRef.current as HTMLElement).textContent;
+    await navigator.clipboard.writeText(message_);
+  };
+
   return (
     <div className="outer-c">
       <div className="inner-c">
         <div className="icon-group">
+          <IoMdCopy className="icon-group-styling copy" onClick={copyCard} />
           <IoMdCreate
             style={EditStyle(doEdit)}
             className="icon-group-styling"
@@ -90,7 +96,7 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
               />
               <GrClose
                 className="inner-c-close icon-group-styling"
-                onClick={expandHandler}
+                onClick={expandCard}
               />
             </div>
           )}
@@ -104,7 +110,7 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
         </div>
 
         {expandable && (
-          <FcExpand className="expandable-icon" onClick={expandHandler} />
+          <FcExpand className="expandable-icon" onClick={expandCard} />
         )}
       </div>
     </div>

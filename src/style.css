@@ -8,6 +8,7 @@
   --bg-card-color: #fbfbfb;
   --bg-nav-color: #2567b5;
   --icon-color: #b0b7b0;
+  --icon-edit: rgb(129, 226, 129);
   --shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   --text-color: #454040;
 }
@@ -74,6 +75,12 @@ body {
   color: var(--icon-color);
 }
 
+.copy:active {
+  color: var(--icon-edit);
+  transition: 0.3s all ease-in-out;
+  scale: 1.2;
+}
+
 .expandable-icon {
   font-size: 1.5rem;
   width: 100%;
@@ -91,7 +98,7 @@ body {
 }
 
 .willEdit {
-  border: 2px solid rgb(129, 226, 129);
+  border: 2px solid var(--icon-edit);
   border-radius: 5px;
 }
 
