@@ -13,12 +13,6 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
   const textRef = useRef();
   const messageRef = useRef();
 
-  const EditStyle = (doEdit: boolean): CSSProperties => {
-    return {
-      color: doEdit ? "var(--icon-edit)" : "var(--icon-color)",
-    };
-  };
-
   useEffect(() => {
     const target = textRef.current as HTMLElement;
     const message_ = messageRef.current as HTMLElement;
@@ -37,6 +31,13 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
       editHandler(id, message_.textContent);
     }
   }, [doEdit]);
+
+  const EditStyle = (doEdit: boolean): CSSProperties => {
+    console.log(doEdit);
+    return {
+      color: doEdit ? "var(--icon-edit)" : "var(--icon-color)",
+    };
+  };
 
   const deleteCard = () => {
     deleteHandler(id);
@@ -62,6 +63,7 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
     const target = textRef.current as HTMLElement;
     if (target.classList.contains("readable")) {
       target.classList.remove("readable");
+      target.classList.remove("willEdit");
       setDoEdit((prev) => !prev);
       setDoRetract(false);
       setDoEdit(false);
