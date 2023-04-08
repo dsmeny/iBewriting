@@ -19,15 +19,10 @@ export default defineConfig({
     assetsDir: "assets",
     sourcemap: true,
   },
-  middleware: [
-    (req, res, next) => {
-      if (req.url.endsWith(".jsx")) {
-        res.setHeader("Content-Type", "text/javascript");
-      }
-      next();
-    },
-    (app) => {
-      app.use(backend);
-    },
-  ],
+  middleware: (app) => {
+    app.use(backend);
+  },
+  esbuild: {
+    jsxInject: `import React from 'react'`,
+  },
 });
