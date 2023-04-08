@@ -12,6 +12,9 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+    mimeTypes: {
+      jsx: "js",
+    },
     open: true,
   },
   build: {
@@ -21,8 +24,5 @@ export default defineConfig({
   },
   middleware: (app) => {
     app.use(backend);
-  },
-  esbuild: {
-    jsxInject: `import React from 'react'`,
   },
 });
