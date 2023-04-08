@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, CSSProperties } from "react";
+import { v4 as uuid } from "uuid";
 import { FcExpand } from "react-icons/fc";
 import { GrClose } from "react-icons/gr";
 import { IoMdTrash, IoMdCreate, IoMdCopy } from "react-icons/io";
+import { IoDuplicateOutline } from "react-icons/io5";
 
 const Card = ({ id, message, deleteHandler, editHandler }) => {
   const [expandable, setExpandable] = useState(false);
@@ -13,7 +15,7 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
 
   const EditStyle = (doEdit: boolean): CSSProperties => {
     return {
-      color: doEdit ? "#81e281" : "var(--icon-color)",
+      color: doEdit ? "var(--icon-edit)" : "var(--icon-color)",
     };
   };
 
@@ -74,10 +76,21 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
     await navigator.clipboard.writeText(message_);
   };
 
+  const duplicateCard = () => {
+    const message_ = (messageRef.current as HTMLElement).textContent;
+    const newId = uuid();
+    editHandler(newId, message_);
+    location.reload();
+  };
+
   return (
     <div className="outer-c">
       <div className="inner-c">
         <div className="icon-group">
+          <IoDuplicateOutline
+            className="icon-group-styling"
+            onClick={duplicateCard}
+          />
           <IoMdCopy className="icon-group-styling copy" onClick={copyCard} />
           <IoMdCreate
             style={EditStyle(doEdit)}
