@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
-import logo from "/logo.jpeg";
+import logo from "./images/logo.jpeg";
 import Button from "./components/Button";
 import { clear } from "./util/_cliDB.js";
 
