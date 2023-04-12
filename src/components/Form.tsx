@@ -35,7 +35,7 @@ const Form = ({ submitHandler }) => {
           name="name"
           autoFocus
           required
-          placeholder="Send a message"
+          placeholder="Store a message"
           onChange={changeHandler}
           ref={inputRef}
         ></textarea>
