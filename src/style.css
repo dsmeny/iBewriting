@@ -37,6 +37,15 @@ body {
   height: 100%;
 }
 
+.no-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  translate: -100% -100%;
+}
+
 .content-inner {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -277,5 +286,8 @@ body {
   }
   #inputField {
     width: 100%;
+  }
+  .no-content {
+    translate: -50% 800%;
   }
 }

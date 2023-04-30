@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { inject } from "@vercel/analytics/*";
 import Home from "./pages/Home";
 import logo from "./images/logo.jpeg";
 import Button from "./components/Button";
@@ -10,6 +11,8 @@ const App = () => {
     clear();
     window.location.reload();
   };
+
+  inject();
 
   return (
     <BrowserRouter>

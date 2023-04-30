@@ -33,7 +33,6 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
   }, [doEdit]);
 
   const EditStyle = (doEdit: boolean): CSSProperties => {
-    console.log(doEdit);
     return {
       color: doEdit ? "var(--icon-edit)" : "var(--icon-color)",
     };
