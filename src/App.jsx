@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import Home from "./pages/Home";
-import logo from "./images/logo.jpeg";
+import logo from "./images/logo.svg";
 import Button from "./components/Button";
 import { clear } from "./util/_cliDB.js";
 
@@ -17,7 +17,7 @@ const App = () => {
       <header className="head">
         <div>
           <Link className="nav" to="/">
-            <img src={logo} alt="logo" height="65px" width="65px" />
+            <img src={logo} alt="logo" width="190" height="52" />
           </Link>
         </div>
         <div>
