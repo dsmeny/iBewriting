@@ -27,7 +27,7 @@ const Home = () => {
         />
       </div>
       <div className="content-inner">
-        {!dbState && <div className="nomessage">No messages</div>}
+        {!dbState && <div className="nomessage">No notes</div>}
         {dbState &&
           dbState.messages.map((message, index) => (
             <Card
