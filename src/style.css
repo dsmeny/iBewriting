@@ -33,17 +33,15 @@ body {
   padding: 0 10px;
 }
 
-.sidebar {
-  height: 100%;
+.nomessage {
+  grid-column: 1 / span 3;
+  text-align: center;
+  color: var(--text-color);
+  font-size: 1.16rem;
 }
 
-.no-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: var(--text-color);
-  font-size: 1.2rem;
-  translate: -100% -100%;
+.sidebar {
+  height: 100%;
 }
 
 .content-inner {
@@ -286,8 +284,5 @@ body {
   }
   #inputField {
     width: 100%;
-  }
-  .no-content {
-    translate: -50% 800%;
   }
 }

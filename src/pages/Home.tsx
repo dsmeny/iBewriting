@@ -4,16 +4,6 @@ import { submitHandler, deleteHandler, editHandler } from "../util/_home";
 import { keys, values } from "../util/_cliDB";
 import Form from "../components/Form";
 
-// style={{
-//   height: dbState.allKeys.length === 0 ? "75vh" : "inherited",
-// }}
-
-// {
-//   dbState.allKeys.length === 0 && (
-//     <div className="no-content">No content found</div>
-//   );
-// }
-
 const Home = () => {
   const [dbState, setDbState] = useState(null);
   const [eventTrigger, setEventTrigger] = useState(false);
@@ -21,7 +11,9 @@ const Home = () => {
   useEffect(() => {
     Promise.all([keys(), values()]).then((data) => {
       const [allKeys, messages] = data;
-      setDbState({ allKeys, messages });
+      if (allKeys.length) {
+        setDbState({ allKeys, messages });
+      }
     });
   }, [eventTrigger]);
 
@@ -35,6 +27,7 @@ const Home = () => {
         />
       </div>
       <div className="content-inner">
+        {!dbState && <div className="nomessage">No messages</div>}
         {dbState &&
           dbState.messages.map((message, index) => (
             <Card
