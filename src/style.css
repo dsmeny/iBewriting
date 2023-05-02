@@ -34,7 +34,7 @@ body {
 }
 
 .nomessage {
-  grid-column: 1 / span 3;
+  grid-column: 1 / span 6;
   text-align: center;
   color: var(--text-color);
   font-size: 1.16rem;
