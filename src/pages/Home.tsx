@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import { submitHandler, deleteHandler, editHandler } from "../util/_home";
 import { keys, values } from "../util/_cliDB";
@@ -41,6 +42,9 @@ const Home = () => {
             />
           ))}
       </div>
+      <footer className="privacy">
+        <Link to="/privacy-policy">privacy policy</Link>
+      </footer>
     </div>
   );
 };
