@@ -1,9 +1,5 @@
 import { v4 as uuid } from "uuid";
 
-export const deleteCard = (deleteHandler, id) => {
-  deleteHandler(id);
-};
-
 export const editCard = (
   textRef,
   doEdit,

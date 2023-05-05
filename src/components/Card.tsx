@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, CSSProperties } from "react";
 import {
-  deleteCard,
   editCard,
   expandCard,
   copyCard,
@@ -48,7 +47,7 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
           />
           <IoMdTrash
             className="icon-group-styling"
-            onClick={() => deleteCard(deleteHandler, id)}
+            onClick={() => deleteHandler(id)}
           />
         </div>
         <div className="cutoff-text" ref={textRef}>

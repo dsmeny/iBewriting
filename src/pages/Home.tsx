@@ -14,9 +14,16 @@ const Home = () => {
       const [allKeys, messages] = data;
       if (allKeys.length) {
         setDbState({ allKeys, messages });
+        return;
       }
+
+      setDbState(null);
     });
   }, [eventTrigger]);
+
+  const deleteCardHandler = (id) => {
+    deleteHandler(id, setEventTrigger, eventTrigger);
+  };
 
   return (
     <div className="content">
@@ -34,9 +41,7 @@ const Home = () => {
             <Card
               message={message}
               id={dbState.allKeys[index]}
-              deleteHandler={(id) =>
-                deleteHandler(id, setEventTrigger, eventTrigger)
-              }
+              deleteHandler={deleteCardHandler}
               editHandler={editHandler}
               key={dbState.allKeys[index]}
             />
