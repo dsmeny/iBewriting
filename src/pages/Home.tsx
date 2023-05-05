@@ -1,26 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import { submitHandler, deleteHandler, editHandler } from "../util/_home";
-import { keys, values } from "../util/_cliDB";
 import Form from "../components/Form";
 
-const Home = () => {
-  const [dbState, setDbState] = useState(null);
-  const [eventTrigger, setEventTrigger] = useState(false);
-
-  useEffect(() => {
-    Promise.all([keys(), values()]).then((data) => {
-      const [allKeys, messages] = data;
-      if (allKeys.length) {
-        setDbState({ allKeys, messages });
-        return;
-      }
-
-      setDbState(null);
-    });
-  }, [eventTrigger]);
-
+const Home = ({ dbState, eventTrigger, setEventTrigger }) => {
   const deleteCardHandler = (id) => {
     deleteHandler(id, setEventTrigger, eventTrigger);
   };
