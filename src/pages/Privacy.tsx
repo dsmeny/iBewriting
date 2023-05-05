@@ -74,7 +74,7 @@ const Privacy = ({ clearBtnHandler }) => {
         <h3>Contact Us</h3>
         <p>
           If you have any questions or concerns about this Privacy Policy,
-          please contact us at support@spinelesstwits.com.
+          please contact us at spinelesstwits@gmail.com.
         </p>
       </div>
     </section>
