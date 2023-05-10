@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { useDBstate, DatabaseContextProvider } from "./util/useDBstate";
 
 import Home from "./pages/Home";
 import { keys, values } from "./util/_cliDB";
@@ -13,7 +12,7 @@ import { clear } from "./util/_cliDB.js";
 const App = () => {
   const [showClearBtn, setShowClearBtn] = useState(true);
   const [eventTrigger, setEventTrigger] = useState(false);
-  const [dbState, setDbState] = useDBstate();
+  const [dbState, setDbState] = useState();
 
   useEffect(() => {
     Promise.all([keys(), values()]).then((data) => {
@@ -75,8 +74,4 @@ const App = () => {
 
 const container = document.getElementById("root");
 const root = createRoot(container);
-root.render(
-  <DatabaseContextProvider>
-    <App />
-  </DatabaseContextProvider>
-);
+root.render(<App />);
