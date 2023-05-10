@@ -23,6 +23,8 @@ const App = () => {
         return;
       }
     });
+
+    //test
   }, [eventTrigger]);
 
   const clearBtnHandler = () => {
