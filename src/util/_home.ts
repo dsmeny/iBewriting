@@ -35,9 +35,8 @@ export const submitHandler = (
   target.focus();
 };
 
-export const deleteHandler = (id, setEventTrigger, eventTrigger) => {
+export const deleteHandler = (id) => {
   del(id);
-  setEventTrigger(() => !eventTrigger);
 };
 
 export const editHandler = (id, updatedMsg) => {

@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
 
 import Home from "./pages/Home";
 import { keys, values } from "./util/_cliDB";
@@ -12,23 +18,25 @@ import { clear } from "./util/_cliDB.js";
 const App = () => {
   const [showClearBtn, setShowClearBtn] = useState(true);
   const [eventTrigger, setEventTrigger] = useState(false);
-  const [dbState, setDbState] = useState();
+  const [dbState, setDbState] = useState(null);
+
+  const clearBtnHandler = (state) => {
+    setShowClearBtn(state);
+  };
 
   useEffect(() => {
     Promise.all([keys(), values()]).then((data) => {
       const [allKeys, messages] = data;
-      if (allKeys.length) {
-        setDbState({ allKeys, messages });
+
+      if (!allKeys.length) {
+        setDbState(null);
+        clearBtnHandler(false);
         return;
       }
+      setDbState({ allKeys, messages });
+      clearBtnHandler(true);
     });
-
-    //test
   }, [eventTrigger]);
-
-  const clearBtnHandler = () => {
-    setShowClearBtn(false);
-  };
 
   const clickHandler = () => {
     clear();
@@ -45,7 +53,7 @@ const App = () => {
         </div>
         {showClearBtn || dbState ? (
           <div>
-            <Button text="clear" onClick={clickHandler} />
+            <Button text="clear" onClick={() => clickHandler(false)} />
           </div>
         ) : (
           <div></div>

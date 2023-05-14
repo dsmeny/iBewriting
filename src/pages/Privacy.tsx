@@ -3,7 +3,7 @@ import classes from "./Privacy.module.css";
 
 const Privacy = ({ clearBtnHandler }) => {
   useEffect(() => {
-    clearBtnHandler();
+    clearBtnHandler(false);
   }, []);
 
   return (

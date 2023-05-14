@@ -6,7 +6,8 @@ import Form from "../components/Form";
 
 const Home = ({ dbState, eventTrigger, setEventTrigger }) => {
   const deleteCardHandler = (id) => {
-    deleteHandler(id, setEventTrigger, eventTrigger);
+    deleteHandler(id);
+    setEventTrigger((prev) => !prev);
   };
 
   return (
