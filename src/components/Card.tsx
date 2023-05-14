@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, CSSProperties } from "react";
+import { useState, useEffect, useRef, CSSProperties, useContext } from "react";
+import { DbContext } from "../util/DbProvider";
 import {
   editCard,
   expandCard,
@@ -14,7 +15,7 @@ import { IoDuplicateOutline } from "react-icons/io5";
 const Card = ({ id, message, deleteHandler, editHandler }) => {
   const [expandable, setExpandable] = useState(false);
   const [doRetract, setDoRetract] = useState(false);
-  const [doEdit, setDoEdit] = useState(false);
+  const { doEdit, setDbUpdate } = useContext(DbContext);
 
   const textRef = useRef();
   const messageRef = useRef();
@@ -35,14 +36,14 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
         <div className="icon-group">
           <IoDuplicateOutline
             className="icon-group-styling"
-            onClick={() => duplicateCard(messageRef, editHandler)}
+            onClick={() => duplicateCard(messageRef)}
           />
           <IoMdCopy className="icon-group-styling copy" onClick={copyCard} />
           <IoMdCreate
             style={EditStyle(doEdit)}
             className="icon-group-styling"
             onClick={() =>
-              editCard(textRef, doEdit, setDoEdit, expandable, setDoRetract)
+              editCard(textRef, doEdit, setDbUpdate, expandable, setDoRetract)
             }
           />
           <IoMdTrash
@@ -57,7 +58,13 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
                 style={EditStyle(doEdit)}
                 className="icon-group-styling"
                 onClick={() =>
-                  editCard(textRef, doEdit, setDoEdit, expandable, setDoRetract)
+                  editCard(
+                    textRef,
+                    doEdit,
+                    setDbUpdate,
+                    expandable,
+                    setDoRetract
+                  )
                 }
               />
               <GrClose

@@ -1,24 +1,7 @@
 import { FormEvent } from "react";
 import { v4 as uuid } from "uuid";
 import { set, del } from "./_cliDB";
-
-const getDateTimeStamp = () => {
-  let options = {
-    weekday: "short",
-    year: "2-digit",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-    timeZone: "America/New_York",
-  };
-
-  const date = new Date();
-  const intlDate = new Intl.DateTimeFormat("en-US", options).format(date);
-
-  return intlDate;
-};
+import { createStrMsg } from "./_global";
 
 export const submitHandler = (
   event: FormEvent<HTMLFormElement>,
@@ -26,9 +9,10 @@ export const submitHandler = (
   eventTrigger
 ) => {
   const target = (event.target as HTMLFormElement).elements["name"];
-  const name = target.value;
-  const strVal = `${getDateTimeStamp()}: ${name}`;
-  set(strVal, uuid(name));
+  const message = target.value;
+  const strVal = createStrMsg(message);
+  set(strVal, uuid(message));
+
   setEventTrigger(() => !eventTrigger);
 
   target.value = "";

@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import Home from "./pages/Home";
 import { keys, values } from "./util/_cliDB";

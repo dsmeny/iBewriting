@@ -1,9 +1,11 @@
 import { v4 as uuid } from "uuid";
+import { set } from "./_cliDB";
+import { createStrMsg } from "./_global";
 
 export const editCard = (
   textRef,
   doEdit,
-  setDoEdit,
+  setDbUpdate,
   expandable,
   setDoRetract
 ) => {
@@ -15,7 +17,7 @@ export const editCard = (
     target.classList.remove("willEdit");
   }
 
-  setDoEdit((prev) => !prev);
+  setDbUpdate(true);
   if (expandable) {
     target.classList.add("readable");
     setDoRetract(true);
@@ -41,11 +43,11 @@ export const copyCard = async (messageRef) => {
   await navigator.clipboard.writeText(message_);
 };
 
-export const duplicateCard = (messageRef, editHandler) => {
-  const message_ = (messageRef.current as HTMLElement).textContent;
-  const newId = uuid();
-  editHandler(newId, message_);
-  location.reload();
+export const duplicateCard = (messageRef) => {
+  const message = (messageRef.current as HTMLElement).textContent;
+  const strVal = createStrMsg(message);
+  set(strVal, uuid(message));
+  // location.reload();
 };
 
 export const effectHandler = (
