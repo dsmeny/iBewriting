@@ -18,10 +18,20 @@ import { clear } from "./util/_cliDB.js";
 const App = () => {
   const [showClearBtn, setShowClearBtn] = useState(true);
   const [eventTrigger, setEventTrigger] = useState(false);
+  const [pathname, setPathname] = useState("/");
   const [dbState, setDbState] = useState(null);
 
   const clearBtnHandler = (state) => {
     setShowClearBtn(state);
+  };
+
+  const pathHandler = (path) => {
+    setPathname(path);
+  };
+
+  const clickHandler = () => {
+    clear();
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -33,25 +43,27 @@ const App = () => {
         clearBtnHandler(false);
         return;
       }
-      setDbState({ allKeys, messages });
-      clearBtnHandler(true);
-    });
-  }, [eventTrigger]);
 
-  const clickHandler = () => {
-    clear();
-    window.location.reload();
-  };
+      setDbState({ allKeys, messages });
+      console.log(pathname);
+    });
+  }, [eventTrigger, pathname]);
 
   return (
     <BrowserRouter>
       <header className="head">
         <div>
           <Link className="nav" to="/">
-            <img src={logo} alt="logo" width="190" height="52" />
+            <img
+              src={logo}
+              alt="logo"
+              width="190"
+              height="52"
+              onClick={() => setPathname("/")}
+            />
           </Link>
         </div>
-        {showClearBtn || dbState ? (
+        {showClearBtn || (dbState && pathname !== "/privacy-policy") ? (
           <div>
             <Button text="clear" onClick={() => clickHandler(false)} />
           </div>
@@ -73,7 +85,12 @@ const App = () => {
         />
         <Route
           path="/privacy-policy"
-          element={<Privacy clearBtnHandler={clearBtnHandler} />}
+          element={
+            <Privacy
+              pathHandler={pathHandler}
+              clearBtnHandler={clearBtnHandler}
+            />
+          }
         />
       </Routes>
     </BrowserRouter>
