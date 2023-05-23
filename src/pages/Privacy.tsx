@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import classes from "./Privacy.module.css";
 
-const Privacy = ({ pathHandler, clearBtnHandler }) => {
+const Privacy = ({ clearBtnHandler }) => {
   useEffect(() => {
     clearBtnHandler(false);
-    pathHandler(window.location.pathname);
   }, []);
 
   return (

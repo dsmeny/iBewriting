@@ -47,7 +47,6 @@ export const duplicateCard = (messageRef) => {
   const message = (messageRef.current as HTMLElement).textContent;
   const strVal = createStrMsg(message);
   set(strVal, uuid(message));
-  // location.reload();
 };
 
 export const effectHandler = (

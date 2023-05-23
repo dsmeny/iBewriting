@@ -1,10 +1,34 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DbProvider from "../util/DbProvider";
 import Card from "../components/Card";
+import { keys, values } from "../util/_cliDB";
 import { submitHandler, deleteHandler, editHandler } from "../util/_home";
 import Form from "../components/Form";
 
-const Home = ({ dbState, eventTrigger, setEventTrigger }) => {
+const Home = ({
+  eventTrigger,
+  showClearBtn,
+  clearBtnHandler,
+  setEventTrigger,
+}) => {
+  const [dbState, setDbState] = useState(null);
+
+  useEffect(() => {
+    Promise.all([keys(), values()]).then((data) => {
+      const [allKeys, messages] = data;
+
+      if (!allKeys.length) {
+        setDbState(null);
+        clearBtnHandler(false);
+        return;
+      }
+
+      clearBtnHandler(true);
+      setDbState({ allKeys, messages });
+    });
+  }, [eventTrigger, showClearBtn]);
+
   const deleteCardHandler = (id) => {
     deleteHandler(id);
     setEventTrigger((prev) => !prev);
