@@ -38,7 +38,10 @@ const Card = ({ id, message }) => {
         <div className="icon-group">
           <IoDuplicateOutline
             className="icon-group-styling"
-            onClick={() => duplicateCard(messageRef)}
+            onClick={() => {
+              duplicateCard(messageRef);
+              eventTriggerHandler();
+            }}
           />
           <IoMdCopy className="icon-group-styling copy" onClick={copyCard} />
           <IoMdCreate
