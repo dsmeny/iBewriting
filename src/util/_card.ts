@@ -18,6 +18,7 @@ export const editCard = (
   if (doEdit) {
     target.classList.remove("willEdit");
     setDoEdit(false);
+    set(message, id);
     return;
   }
 
@@ -29,8 +30,6 @@ export const editCard = (
     target.classList.add("readable");
     setDoRetract(true);
   }
-
-  set(message, id);
 };
 
 export const expandCard = (cardRef, setDoRetract) => {
