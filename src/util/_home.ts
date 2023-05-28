@@ -5,24 +5,20 @@ import { createStrMsg } from "./_global";
 
 export const submitHandler = (
   event: FormEvent<HTMLFormElement>,
-  setEventTrigger,
-  eventTrigger
+  eventTriggerHandler
 ) => {
   const target = (event.target as HTMLFormElement).elements["name"];
   const message = target.value;
   const strVal = createStrMsg(message);
   set(strVal, uuid(message));
 
-  setEventTrigger(() => !eventTrigger);
+  eventTriggerHandler();
 
   target.value = "";
   target.focus();
 };
 
-export const deleteHandler = (id) => {
+export const deleteHandler = (id, eventTriggerHandler) => {
   del(id);
-};
-
-export const editHandler = (id, updatedMsg) => {
-  set(updatedMsg, id);
+  eventTriggerHandler();
 };

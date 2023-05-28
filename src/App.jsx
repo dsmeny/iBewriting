@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DbProvider from "./util/DbProvider";
 
 import Home from "./pages/Home";
 import Privacy from "./pages/Privacy";
@@ -9,7 +10,6 @@ import { clear } from "./util/_cliDB.js";
 
 const App = () => {
   const [showClearBtn, setShowClearBtn] = useState(false);
-  const [eventTrigger, setEventTrigger] = useState(false);
 
   const clearBtnHandler = (state) => {
     setShowClearBtn(state);
@@ -27,12 +27,12 @@ const App = () => {
         <Route
           path="/"
           element={
-            <Home
-              eventTrigger={eventTrigger}
-              showClearBtn={showClearBtn}
-              clearBtnHandler={clearBtnHandler}
-              setEventTrigger={setEventTrigger}
-            />
+            <DbProvider>
+              <Home
+                showClearBtn={showClearBtn}
+                clearBtnHandler={clearBtnHandler}
+              />
+            </DbProvider>
           }
         />
         <Route

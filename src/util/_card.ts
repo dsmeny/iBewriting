@@ -3,39 +3,46 @@ import { set } from "./_cliDB";
 import { createStrMsg } from "./_global";
 
 export const editCard = (
-  textRef,
+  cardRef,
+  messageRef,
+  id,
   doEdit,
-  setDbUpdate,
+  setDoEdit,
   expandable,
   setDoRetract
 ) => {
-  const target = textRef.current as HTMLElement;
-
-  target.classList.add("willEdit");
+  const target = cardRef.current as HTMLElement;
+  const messageElem = messageRef.current as HTMLElement;
+  const message = messageElem.textContent;
 
   if (doEdit) {
     target.classList.remove("willEdit");
+    setDoEdit(false);
+    return;
   }
 
-  setDbUpdate(true);
+  target.classList.add("willEdit");
+  messageElem.focus();
+  setDoEdit(true);
+
   if (expandable) {
     target.classList.add("readable");
     setDoRetract(true);
   }
+
+  set(message, id);
 };
 
-export const expandCard = (textRef, setDoEdit, setDoRetract) => {
-  const target = textRef.current as HTMLElement;
-  if (target.classList.contains("readable")) {
-    target.classList.remove("readable");
-    target.classList.remove("willEdit");
-    setDoEdit((prev) => !prev);
+export const expandCard = (cardRef, setDoRetract) => {
+  const card = cardRef.current as HTMLElement;
+  if (card.classList.contains("readable")) {
+    card.classList.remove("readable");
+    card.classList.remove("willEdit");
     setDoRetract(false);
-    setDoEdit(false);
     return;
   }
   setDoRetract(true);
-  target.classList.add("readable");
+  card.classList.add("readable");
 };
 
 export const copyCard = async (messageRef) => {
@@ -49,28 +56,14 @@ export const duplicateCard = (messageRef) => {
   set(strVal, uuid(message));
 };
 
-export const effectHandler = (
-  textRef,
-  messageRef,
-  setExpandable,
-  doEdit,
-  editHandler,
-  id
-) => {
-  const target = textRef.current as HTMLElement;
-  const message_ = messageRef.current as HTMLElement;
-  message_.focus();
+export const expandHandler = (cardRef, setExpandable) => {
+  const target = cardRef.current as HTMLElement;
 
   if (target) {
     const clientHt = target.clientHeight;
     const scrollHt = target.scrollHeight;
     if (scrollHt > clientHt) {
       setExpandable(true);
-      message_.focus();
     }
-  }
-
-  if (!doEdit) {
-    editHandler(id, message_.textContent);
   }
 };

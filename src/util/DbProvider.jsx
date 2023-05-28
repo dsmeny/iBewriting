@@ -1,20 +1,16 @@
-import { useEffect, useState, createContext } from "react";
+import { useState, createContext } from "react";
 
 export const DbContext = createContext();
 
 const DbProvider = ({ children }) => {
-  const [dbUpdate, setDbUpdate] = useState(null);
-  const [doEdit, setDoEdit] = useState(false);
+  const [eventTrigger, setEventTrigger] = useState(false);
 
-  useEffect(() => {
-    if (dbUpdate) {
-      setDoEdit((prev) => !prev);
-    }
-  }, [setDbUpdate]);
-
+  const eventTriggerHandler = () => {
+    setEventTrigger((prev) => !prev);
+  };
   const context = {
-    doEdit,
-    setDbUpdate,
+    eventTrigger,
+    eventTriggerHandler,
   };
 
   return <DbContext.Provider value={context}>{children}</DbContext.Provider>;

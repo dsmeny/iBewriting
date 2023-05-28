@@ -5,23 +5,25 @@ import {
   expandCard,
   copyCard,
   duplicateCard,
-  effectHandler,
+  expandHandler,
 } from "../util/_card";
+import { deleteHandler } from "../util/_home";
 import { FcExpand } from "react-icons/fc";
 import { GrClose } from "react-icons/gr";
 import { IoMdTrash, IoMdCreate, IoMdCopy } from "react-icons/io";
 import { IoDuplicateOutline } from "react-icons/io5";
 
-const Card = ({ id, message, deleteHandler, editHandler }) => {
+const Card = ({ id, message }) => {
   const [expandable, setExpandable] = useState(false);
   const [doRetract, setDoRetract] = useState(false);
-  const { doEdit, setDbUpdate } = useContext(DbContext);
+  const [doEdit, setDoEdit] = useState(false);
+  const { eventTriggerHandler } = useContext(DbContext);
 
-  const textRef = useRef();
+  const cardRef = useRef();
   const messageRef = useRef();
 
   useEffect(() => {
-    effectHandler(textRef, messageRef, setExpandable, doEdit, editHandler, id);
+    expandHandler(cardRef, setExpandable);
   }, [doEdit]);
 
   const EditStyle = (doEdit: boolean): CSSProperties => {
@@ -42,34 +44,46 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
           <IoMdCreate
             style={EditStyle(doEdit)}
             className="icon-group-styling"
-            onClick={() =>
-              editCard(textRef, doEdit, setDbUpdate, expandable, setDoRetract)
-            }
+            onClick={() => {
+              editCard(
+                cardRef,
+                messageRef,
+                id,
+                doEdit,
+                setDoEdit,
+                expandable,
+                setDoRetract
+              );
+              eventTriggerHandler();
+            }}
           />
           <IoMdTrash
             className="icon-group-styling"
-            onClick={() => deleteHandler(id)}
+            onClick={() => deleteHandler(id, eventTriggerHandler)}
           />
         </div>
-        <div className="cutoff-text" ref={textRef}>
+        <div className="cutoff-text" ref={cardRef}>
           {doRetract && (
             <div className="icon-group">
               <IoMdCreate
                 style={EditStyle(doEdit)}
                 className="icon-group-styling"
-                onClick={() =>
+                onClick={() => {
                   editCard(
-                    textRef,
+                    cardRef,
+                    messageRef,
+                    id,
                     doEdit,
-                    setDbUpdate,
+                    setDoEdit,
                     expandable,
                     setDoRetract
-                  )
-                }
+                  );
+                  eventTriggerHandler();
+                }}
               />
               <GrClose
                 className="inner-c-close icon-group-styling"
-                onClick={() => expandCard(textRef, setDoEdit, setDoRetract)}
+                onClick={() => expandCard(cardRef, setDoRetract)}
               />
             </div>
           )}
@@ -85,7 +99,7 @@ const Card = ({ id, message, deleteHandler, editHandler }) => {
         {expandable && (
           <FcExpand
             className="expandable-icon"
-            onClick={() => expandCard(textRef, setDoEdit, setDoRetract)}
+            onClick={() => expandCard(cardRef, setDoRetract)}
           />
         )}
       </div>
