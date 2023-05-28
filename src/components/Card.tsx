@@ -43,7 +43,10 @@ const Card = ({ id, message }) => {
               eventTriggerHandler();
             }}
           />
-          <IoMdCopy className="icon-group-styling copy" onClick={copyCard} />
+          <IoMdCopy
+            className="icon-group-styling copy"
+            onClick={() => copyCard(messageRef)}
+          />
           <IoMdCreate
             style={EditStyle(doEdit)}
             className="icon-group-styling"

@@ -45,7 +45,9 @@ export const expandCard = (cardRef, setDoRetract) => {
 };
 
 export const copyCard = async (messageRef) => {
-  const message_ = (messageRef.current as HTMLElement).textContent;
+  let message_ = (messageRef.current as HTMLElement).textContent;
+  message_ = message_.replace(/.+(?=([A-Z])*\:)\S/, "").trimStart();
+  console.log(message_);
   await navigator.clipboard.writeText(message_);
 };
 
