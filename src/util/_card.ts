@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { set } from "./_cliDB";
-import { createStrMsg } from "./_global";
+import { createStrMsg, stripDate } from "./_global";
 
 export const editCard = (
   cardRef,
@@ -52,8 +52,9 @@ export const copyCard = async (messageRef) => {
 
 export const duplicateCard = (messageRef) => {
   const message = (messageRef.current as HTMLElement).textContent;
-  const strVal = createStrMsg(message);
-  set(strVal, uuid(message));
+  const stripMessage = stripDate(message);
+  const strVal = createStrMsg(stripMessage);
+  set(strVal, uuid(stripMessage));
 };
 
 export const expandHandler = (cardRef, setExpandable) => {

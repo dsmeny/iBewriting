@@ -20,3 +20,8 @@ export const createStrMsg = (message) => {
   const strVal = `${getDateTimeStamp()}: ${message}`;
   return strVal;
 };
+
+export const stripDate = (message) => {
+  const strVal = message.replace(/.*[A-Z](?:\:)/s, "").trimStart();
+  return strVal;
+};
