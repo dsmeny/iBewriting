@@ -11,7 +11,6 @@ const Home = ({ showClearBtn, clearBtnHandler }) => {
   const [dbState, setDbState] = useState(null);
 
   useEffect(() => {
-    console.log("useEffect fired!");
     Promise.all([keys(), values()]).then((data) => {
       const [allKeys, messages] = data;
 
@@ -27,14 +26,14 @@ const Home = ({ showClearBtn, clearBtnHandler }) => {
   }, [eventTrigger, showClearBtn]);
 
   return (
-    <div className="content">
+    <div className="home-content">
       <div className="sidebar">
         <Form
           submitHandler={(event) => submitHandler(event, eventTriggerHandler)}
         />
       </div>
 
-      <div className="content-inner">
+      <div className="home-content-inner">
         {!dbState && <div className="nomessage">No notes</div>}
         {dbState &&
           dbState.messages.map((message, index) => (

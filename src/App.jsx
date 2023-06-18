@@ -15,14 +15,14 @@ const App = () => {
     setShowClearBtn(state);
   };
 
-  const clickHandler = () => {
+  const clearHandler = () => {
     clear();
     setShowClearBtn(false);
   };
 
   return (
     <BrowserRouter>
-      <Nav clickHandler={clickHandler} showClearBtn={showClearBtn} />
+      <Nav clearHandler={clearHandler} showClearBtn={showClearBtn} />
       <Routes>
         <Route
           path="/"
