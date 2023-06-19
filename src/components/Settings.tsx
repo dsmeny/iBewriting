@@ -4,7 +4,7 @@ import { localStoreHandler, checkHandler } from "../util/_settings";
 import { SETTINGS_STORE } from "../util/_global";
 import Toggle from "./Toggle";
 
-const Settings = ({ closeHandler }) => {
+const Settings = ({ showSettingsHandler }) => {
   const [settings, setSettings] = useState({});
   const [toggleID, setToggleID] = useState(null);
   const [init, setInit] = useState(false);
@@ -43,7 +43,10 @@ const Settings = ({ closeHandler }) => {
     <div className="settings-container">
       <div className="settings-header">
         <div className="settings-close">
-          <AiOutlineClose style={{ color: "white" }} onClick={closeHandler} />
+          <AiOutlineClose
+            style={{ color: "white" }}
+            onClick={showSettingsHandler}
+          />
         </div>
         <ul className="settings-header-label">
           <li>Options</li>

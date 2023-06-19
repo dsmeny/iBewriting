@@ -1,7 +1,6 @@
 import classes from "./styles/Toggle.module.css";
 
 const Toggle = ({ id, isChecked, checkHandler }) => {
-  console.log("isChecked: ", isChecked);
   return (
     <label className={classes.switch}>
       <input

@@ -8,6 +8,7 @@
   --bg-card-color: #fbfbfb;
   --bg-nav-color: #2567b5;
   --bg-popup-color: #ffa800;
+  --bg-toggle-color: #2567b559;
   --icon-color: #b0b7b0;
   --icon-edit: rgb(129, 226, 129);
   --shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -55,6 +56,20 @@ body {
   flex-direction: column;
   gap: 1rem;
   overflow: hidden;
+  animation-name: slidein;
+  animation-duration: 0.5s;
+}
+
+@keyframes slidein {
+  from {
+    top: 0px;
+    width: 0px;
+  }
+
+  to {
+    top: 30px;
+    width: 320px;
+  }
 }
 
 .settings-header {

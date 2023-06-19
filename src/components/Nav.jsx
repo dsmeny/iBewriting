@@ -1,3 +1,4 @@
+import { useState } from "react";
 import logo from "../images/logo.svg";
 import Button from "./Button";
 import Settings from "./Settings";
@@ -5,13 +6,16 @@ import { FiSettings } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const Nav = ({ clearHandler, showClearBtn }) => {
-  const closeHandler = () => {
-    console.log("closeHandler clicked");
+  const [showSettings, setShowSettings] = useState(false);
+
+  const showSettingsHandler = () => {
+    setShowSettings((prev) => !prev);
   };
 
   return (
     <header className="head">
-      <Settings closeHandler={closeHandler} />
+      {showSettings && <Settings showSettingsHandler={showSettingsHandler} />}
+
       <div>
         <Link to="/">
           <img src={logo} alt="logo" width="190" height="52" />
@@ -19,7 +23,10 @@ const Nav = ({ clearHandler, showClearBtn }) => {
       </div>
       <div className="head-btns">
         {showClearBtn && <Button text="clear" onClick={clearHandler} />}
-        <FiSettings className="head-btns-setting" />
+        <FiSettings
+          className="head-btns-setting"
+          onClick={showSettingsHandler}
+        />
       </div>
     </header>
   );
