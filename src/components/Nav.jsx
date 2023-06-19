@@ -1,20 +1,16 @@
-import { useState } from "react";
 import logo from "../images/logo.svg";
 import Button from "./Button";
 import Settings from "./Settings";
+import useShowCard from "./hooks/useShowCard";
 import { FiSettings } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const Nav = ({ clearHandler, showClearBtn }) => {
-  const [showSettings, setShowSettings] = useState(false);
-
-  const showSettingsHandler = () => {
-    setShowSettings((prev) => !prev);
-  };
+  const { showCard, showCardHandler } = useShowCard();
 
   return (
     <header className="head">
-      {showSettings && <Settings showSettingsHandler={showSettingsHandler} />}
+      {showCard && <Settings showCardHandler={showCardHandler} />}
 
       <div>
         <Link to="/">
@@ -23,10 +19,7 @@ const Nav = ({ clearHandler, showClearBtn }) => {
       </div>
       <div className="head-btns">
         {showClearBtn && <Button text="clear" onClick={clearHandler} />}
-        <FiSettings
-          className="head-btns-setting"
-          onClick={showSettingsHandler}
-        />
+        <FiSettings className="head-btns-setting" onClick={showCardHandler} />
       </div>
     </header>
   );

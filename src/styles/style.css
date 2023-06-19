@@ -148,18 +148,18 @@ body {
   font-size: 1.16rem;
 }
 
-.outer-c {
+.outer-card {
   box-shadow: var(--shadow);
   border-radius: 10px;
+  position: relative;
 }
 
-.inner-c {
+.inner-card {
   display: flex;
   gap: 1rem;
   margin: 20px;
   flex-direction: column;
   height: 88%;
-  align-items: flex-end;
 }
 
 .inner-c div {
@@ -206,6 +206,13 @@ body {
 }
 
 .icon-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.icon-group > div {
   display: flex;
   align-items: center;
   justify-content: flex-end !important;

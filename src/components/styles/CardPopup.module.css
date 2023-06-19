@@ -1,0 +1,54 @@
+.keylist-container {
+  background-color: var(--bg-card-color);
+  box-shadow: var(--shadow);
+  width: 272px;
+  position: absolute;
+  z-index: 99999;
+  left: 12px;
+  top: 8px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.keylist-header {
+  background-color: var(--bg-popup-color);
+  padding: 10px;
+}
+
+.keylist-header p {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.keylist-options {
+  padding: 10px;
+}
+
+.keylist-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  padding-bottom: 13px;
+}
+
+.keylist-options-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.keylist-options-list li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 35px;
+  border-bottom: 1px solid rgba(177, 177, 177, 0.1);
+}
+
+.keylist-icons {
+  color: blue;
+}

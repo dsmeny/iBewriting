@@ -12,12 +12,16 @@ import { FcExpand } from "react-icons/fc";
 import { GrClose } from "react-icons/gr";
 import { IoMdTrash, IoMdCreate, IoMdCopy } from "react-icons/io";
 import { IoDuplicateOutline } from "react-icons/io5";
+import KeylistPopup from "./KeylistPopup";
+import useShowCard from "./hooks/useShowCard";
+import { RiPriceTag3Line } from "react-icons/ri";
 
 const Card = ({ id, message }) => {
   const [expandable, setExpandable] = useState(false);
   const [doRetract, setDoRetract] = useState(false);
   const [doEdit, setDoEdit] = useState(false);
   const { eventTriggerHandler } = useContext(DbContext);
+  const { showCard, showCardHandler } = useShowCard();
 
   const cardRef = useRef();
   const messageRef = useRef();
@@ -33,40 +37,47 @@ const Card = ({ id, message }) => {
   };
 
   return (
-    <div className="outer-c">
-      <div className="inner-c">
+    <div className="outer-card">
+      {showCard && <KeylistPopup showCardHandler={showCardHandler} />}
+      <div className="inner-card">
         <div className="icon-group">
-          <IoDuplicateOutline
+          <RiPriceTag3Line
             className="icon-group-styling"
-            onClick={() => {
-              duplicateCard(messageRef);
-              eventTriggerHandler();
-            }}
+            onClick={showCardHandler}
           />
-          <IoMdCopy
-            className="icon-group-styling copy"
-            onClick={() => copyCard(messageRef)}
-          />
-          <IoMdCreate
-            style={EditStyle(doEdit)}
-            className="icon-group-styling"
-            onClick={() => {
-              editCard(
-                cardRef,
-                messageRef,
-                id,
-                doEdit,
-                setDoEdit,
-                expandable,
-                setDoRetract
-              );
-              eventTriggerHandler();
-            }}
-          />
-          <IoMdTrash
-            className="icon-group-styling"
-            onClick={() => deleteHandler(id, eventTriggerHandler)}
-          />
+          <div>
+            <IoDuplicateOutline
+              className="icon-group-styling"
+              onClick={() => {
+                duplicateCard(messageRef);
+                eventTriggerHandler();
+              }}
+            />
+            <IoMdCopy
+              className="icon-group-styling copy"
+              onClick={() => copyCard(messageRef)}
+            />
+            <IoMdCreate
+              style={EditStyle(doEdit)}
+              className="icon-group-styling"
+              onClick={() => {
+                editCard(
+                  cardRef,
+                  messageRef,
+                  id,
+                  doEdit,
+                  setDoEdit,
+                  expandable,
+                  setDoRetract
+                );
+                eventTriggerHandler();
+              }}
+            />
+            <IoMdTrash
+              className="icon-group-styling"
+              onClick={() => deleteHandler(id, eventTriggerHandler)}
+            />
+          </div>
         </div>
         <div className="cutoff-text" ref={cardRef}>
           {doRetract && (
