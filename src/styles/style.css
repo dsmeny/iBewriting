@@ -45,7 +45,7 @@ body {
 .settings-container {
   background-color: var(--bg-card-color);
   box-shadow: var(--shadow);
-  width: 19%;
+  width: 320px;
   position: absolute;
   z-index: 99999;
   right: 10px;
@@ -94,7 +94,7 @@ body {
 .settings-options-list {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1rem;
   padding-bottom: 13px;
 }
 

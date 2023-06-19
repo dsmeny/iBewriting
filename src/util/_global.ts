@@ -1,3 +1,5 @@
+export const SETTINGS_STORE = "settings";
+
 const getDateTimeStamp = () => {
   let options = {
     weekday: "short",
