@@ -1,4 +1,5 @@
 export const SETTINGS_STORE = "settings";
+export const KEYWORDS_STORE = "keywords";
 
 const getDateTimeStamp = () => {
   let options = {
@@ -26,4 +27,28 @@ export const createStrMsg = (message) => {
 export const stripDate = (message) => {
   const strVal = message.replace(/.*[A-Z](?:\:)/s, "").trimStart();
   return strVal;
+};
+
+export const firstLetterCaps = (str) => {
+  const firstLetter = str.charAt(0).toUpperCase();
+  const newStr = firstLetter.concat(str.slice(1));
+  return newStr;
+};
+
+export const localStoreHandler = (key, action, settings = null) => {
+  switch (action) {
+    case "set":
+      localStorage.setItem(key, settings);
+      return;
+    case "get":
+      const res = localStorage.getItem(key);
+      return res;
+    case "remove":
+      localStorage.removeItem(key);
+      return;
+    case "clear":
+      localStorage.clear();
+    default:
+      return;
+  }
 };

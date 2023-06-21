@@ -1,9 +1,12 @@
-import React from "react";
+import { useContext } from "react";
+import { KeywordListContext } from "../util/LocalStoreProvider";
 import classes from "./styles/CardPopup.module.css";
 import Close from "./Close";
-import { IoIosAddCircleOutline } from "react-icons/io";
+import Keyword from "./Keyword";
 
 const KeylistPopup = ({ showCardHandler }) => {
+  const { keywordList } = useContext(KeywordListContext);
+
   return (
     <div className={`${classes["keylist-container"]}`}>
       <div className={`${classes["keylist-header"]}`}>
@@ -12,18 +15,9 @@ const KeylistPopup = ({ showCardHandler }) => {
       </div>
       <div className={`${classes["keylist-options"]}`}>
         <ul className={`${classes["keylist-options-list"]}`}>
-          <li>
-            <p style={{ color: "#2567B5" }}>Temperature</p>
-            <IoIosAddCircleOutline className="icon-group-styling keylist-icons" />
-          </li>
-          <li>
-            <p style={{ color: "#7ACC5D" }}>Location</p>
-            <IoIosAddCircleOutline className="icon-group-styling keylist-icons" />
-          </li>
-          <li>
-            <p style={{ color: "#FFA800" }}>Neighbor</p>
-            <IoIosAddCircleOutline className="icon-group-styling keylist-icons" />
-          </li>
+          {keywordList.map((item) => (
+            <Keyword keyword={item.keyword} color={item.color} key={item.id} />
+          ))}
         </ul>
       </div>
     </div>

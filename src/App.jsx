@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DbProvider from "./util/DbProvider";
+import LocalStoreProvider from "./util/LocalStoreProvider";
 
 import Home from "./pages/Home";
 import Privacy from "./pages/Privacy";
@@ -28,10 +29,12 @@ const App = () => {
           path="/"
           element={
             <DbProvider>
-              <Home
-                showClearBtn={showClearBtn}
-                clearBtnHandler={clearBtnHandler}
-              />
+              <LocalStoreProvider>
+                <Home
+                  showClearBtn={showClearBtn}
+                  clearBtnHandler={clearBtnHandler}
+                />
+              </LocalStoreProvider>
             </DbProvider>
           }
         />

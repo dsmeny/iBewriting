@@ -1,0 +1,22 @@
+{
+  "temperature": {
+    "id": 1,
+    "keyword": "temperature",
+    "color": "#2567B5"
+  },
+  "landlord": {
+    "id": 2,
+    "keyword": "landlord",
+    "color": "#7ACC5D"
+  },
+  "neighbor": {
+    "id": 3,
+    "keyword": "neighbor",
+    "color": "#FFA800"
+  },
+  "internet": {
+    "id": 4,
+    "keyword": "internet",
+    "color": "#b3256c"
+  }
+}

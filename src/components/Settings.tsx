@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { localStoreHandler, checkHandler } from "../util/_settings";
-import { SETTINGS_STORE } from "../util/_global";
+import { checkHandler } from "../util/_settings";
+import { SETTINGS_STORE, localStoreHandler } from "../util/_global";
 import Toggle from "./Toggle";
 import Close from "./Close";
 
@@ -16,10 +16,10 @@ const Settings = ({ showCardHandler }) => {
   };
 
   useEffect(() => {
-    const parsedStorage = JSON.parse(localStoreHandler("get", SETTINGS_STORE));
+    const parsedStorage = JSON.parse(localStoreHandler(SETTINGS_STORE, "get"));
 
     if (!parsedStorage) {
-      localStoreHandler("set", JSON.stringify(defaultConfig));
+      localStoreHandler(SETTINGS_STORE, "set", JSON.stringify(defaultConfig));
       setSettings(() => defaultConfig);
       setInit((prev) => !prev);
     }
@@ -33,7 +33,7 @@ const Settings = ({ showCardHandler }) => {
       const value = Object.values(toggleID);
       const pStore = { ...parsedStorage, [`${key[0]}`]: value[0] };
 
-      localStoreHandler("set", JSON.stringify(pStore));
+      localStoreHandler(SETTINGS_STORE, "set", JSON.stringify(pStore));
       setToggleID(null);
       setSettings(() => pStore);
     }
