@@ -7,6 +7,7 @@ import LocalStoreProvider from "./util/LocalStoreProvider";
 import Home from "./pages/Home";
 import Privacy from "./pages/Privacy";
 import Nav from "./components/Nav";
+import Sidebar from "./components/Sidebar";
 import { clear } from "./util/_cliDB.js";
 
 const App = () => {
@@ -23,26 +24,31 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Nav clearHandler={clearHandler} showClearBtn={showClearBtn} />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <DbProvider>
-              <LocalStoreProvider>
-                <Home
-                  showClearBtn={showClearBtn}
-                  clearBtnHandler={clearBtnHandler}
+      <DbProvider>
+        <LocalStoreProvider>
+          <div className="container">
+            <Nav clearHandler={clearHandler} showClearBtn={showClearBtn} />
+            <div className="container-inner">
+              <Sidebar />
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <Home
+                      showClearBtn={showClearBtn}
+                      clearBtnHandler={clearBtnHandler}
+                    />
+                  }
                 />
-              </LocalStoreProvider>
-            </DbProvider>
-          }
-        />
-        <Route
-          path="/privacy-policy"
-          element={<Privacy clearBtnHandler={clearBtnHandler} />}
-        />
-      </Routes>
+                <Route
+                  path="/privacy-policy"
+                  element={<Privacy clearBtnHandler={clearBtnHandler} />}
+                />
+              </Routes>
+            </div>
+          </div>
+        </LocalStoreProvider>
+      </DbProvider>
     </BrowserRouter>
   );
 };

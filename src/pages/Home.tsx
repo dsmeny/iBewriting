@@ -1,13 +1,11 @@
 import { useState, useEffect, useContext } from "react";
-import { DbContext } from "../util/DbProvider";
 import { Link } from "react-router-dom";
+import { DbContext } from "../util/DbProvider";
 import Card from "../components/Card";
 import { keys, values } from "../util/_cliDB";
-import { submitHandler } from "../util/_home";
-import Form from "../components/Form";
 
 const Home = ({ showClearBtn, clearBtnHandler }) => {
-  const { eventTrigger, eventTriggerHandler } = useContext(DbContext);
+  const { eventTrigger } = useContext(DbContext);
   const [dbState, setDbState] = useState(null);
 
   useEffect(() => {
@@ -26,14 +24,8 @@ const Home = ({ showClearBtn, clearBtnHandler }) => {
   }, [eventTrigger, showClearBtn]);
 
   return (
-    <div className="home-content">
-      <div className="sidebar">
-        <Form
-          submitHandler={(event) => submitHandler(event, eventTriggerHandler)}
-        />
-      </div>
-
-      <div className="home-content-inner">
+    <div>
+      <div className="home-content">
         {!dbState && <div className="nomessage">No notes</div>}
         {dbState &&
           dbState.messages.map((message, index) => (
