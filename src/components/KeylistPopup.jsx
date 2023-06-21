@@ -4,7 +4,7 @@ import classes from "./styles/CardPopup.module.css";
 import Close from "./Close";
 import Keyword from "./Keyword";
 
-const KeylistPopup = ({ showCardHandler }) => {
+const KeylistPopup = ({ showCardHandler, keywordHandler }) => {
   const { keywordList } = useContext(KeywordListContext);
 
   return (
@@ -16,7 +16,13 @@ const KeylistPopup = ({ showCardHandler }) => {
       <div className={`${classes["keylist-options"]}`}>
         <ul className={`${classes["keylist-options-list"]}`}>
           {keywordList.map((item) => (
-            <Keyword keyword={item.keyword} color={item.color} key={item.id} />
+            <Keyword
+              keyword={item.keyword}
+              color={item.color}
+              key={item.id}
+              keywordHandler={keywordHandler}
+              showCardHandler={showCardHandler}
+            />
           ))}
         </ul>
       </div>

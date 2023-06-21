@@ -1,7 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import { KEYWORDS_STORE, localStoreHandler } from "./_global";
 import keywords from "../keywords.json";
-import { v4 as uuidv4 } from "uuid";
 
 export const KeywordListContext = createContext();
 
@@ -30,8 +29,6 @@ const LocalStoreProvider = ({ children }) => {
   const context = {
     keywordList,
   };
-
-  console.log(context.keywordList);
 
   return (
     <KeywordListContext.Provider value={context}>

@@ -20,6 +20,7 @@ const Card = ({ id, message }) => {
   const [expandable, setExpandable] = useState(false);
   const [doRetract, setDoRetract] = useState(false);
   const [doEdit, setDoEdit] = useState(false);
+  const [keyword, setKeyword] = useState(null);
   const { eventTriggerHandler } = useContext(DbContext);
   const { showCard, showCardHandler } = useShowCard();
 
@@ -36,15 +37,29 @@ const Card = ({ id, message }) => {
     };
   };
 
+  const keywordHandler = (key) => {
+    setKeyword(key);
+  };
+
   return (
     <div className="outer-card">
-      {showCard && <KeylistPopup showCardHandler={showCardHandler} />}
+      {showCard && (
+        <KeylistPopup
+          showCardHandler={showCardHandler}
+          keywordHandler={keywordHandler}
+        />
+      )}
       <div className="inner-card">
         <div className="icon-group">
-          <RiPriceTag3Line
-            className="icon-group-styling"
-            onClick={showCardHandler}
-          />
+          <div>
+            <RiPriceTag3Line
+              className="icon-group-styling"
+              onClick={showCardHandler}
+            />
+            <p style={{ color: `${keyword ? keyword.color : "fff"}` }}>
+              {keyword ? keyword.keyword : ""}
+            </p>
+          </div>
           <div>
             <IoDuplicateOutline
               className="icon-group-styling"
