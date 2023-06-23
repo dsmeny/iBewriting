@@ -185,18 +185,16 @@ body {
   border-radius: 10px;
 }
 
+.icon-group-keywords {
+  position: relative;
+}
+
 .inner-card {
   display: flex;
   gap: 1rem;
   margin: 20px;
   flex-direction: column;
   height: 88%;
-}
-
-.inner-c div {
-  line-height: 1.7rem;
-  width: 100%;
-  margin-bottom: 10px;
 }
 
 .inner-c-close {
@@ -262,7 +260,7 @@ body {
 
 .cutoff-text div {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   padding: 10px;
   margin-bottom: 20px;
 }

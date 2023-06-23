@@ -44,10 +44,12 @@ const Card = ({ id, message }) => {
   return (
     <div className="outer-card">
       {showCard && (
-        <KeylistPopup
-          showCardHandler={showCardHandler}
-          keywordHandler={keywordHandler}
-        />
+        <div className="icon-group-keywords">
+          <KeylistPopup
+            showCardHandler={showCardHandler}
+            keywordHandler={keywordHandler}
+          />
+        </div>
       )}
       <div className="inner-card">
         <div className="icon-group">
@@ -115,7 +117,7 @@ const Card = ({ id, message }) => {
               />
               <GrClose
                 className="inner-c-close icon-group-styling"
-                onClick={() => expandCard(cardRef, setDoRetract)}
+                onClick={() => expandCard(cardRef, setDoEdit, setDoRetract)}
               />
             </div>
           )}
@@ -131,7 +133,7 @@ const Card = ({ id, message }) => {
         {expandable && !doRetract && (
           <FcExpand
             className="expandable-icon"
-            onClick={() => expandCard(cardRef, setDoRetract)}
+            onClick={() => expandCard(cardRef, setDoEdit, setDoRetract)}
           />
         )}
       </div>
