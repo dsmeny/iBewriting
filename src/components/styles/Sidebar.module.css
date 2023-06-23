@@ -1,0 +1,36 @@
+.sidebar {
+  flex: 30%;
+  padding-right: 15px;
+  border-right: 1px solid rgba(176, 183, 176, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.sidebar-keyword-list {
+  color: var(--icon-color);
+  text-align: center;
+  position: relative;
+}
+
+.sidebar-keyword-list h3 {
+  font-weight: 100;
+}
+
+.sidebar-keyword-list:before {
+  content: "";
+  border: 1px solid var(--icon-color);
+  position: absolute;
+  left: 0px;
+  top: 9px;
+  width: 7.7rem;
+}
+
+.sidebar-keyword-list:after {
+  content: "";
+  border: 1px solid var(--icon-color);
+  position: absolute;
+  right: 0px;
+  top: 9px;
+  width: 7.7rem;
+}

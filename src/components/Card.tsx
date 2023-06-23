@@ -60,7 +60,7 @@ const Card = ({ id, message }) => {
               {keyword ? keyword.keyword : ""}
             </p>
           </div>
-          <div>
+          <div className="icon-group-actions">
             <IoDuplicateOutline
               className="icon-group-styling"
               onClick={() => {
@@ -128,7 +128,7 @@ const Card = ({ id, message }) => {
           </p>
         </div>
 
-        {expandable && (
+        {expandable && !doRetract && (
           <FcExpand
             className="expandable-icon"
             onClick={() => expandCard(cardRef, setDoRetract)}

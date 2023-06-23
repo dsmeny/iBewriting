@@ -1,10 +1,7 @@
-import { useEffect, useState, CSSProperties, useRef } from "react";
+import { useRef } from "react";
 import { BsSend } from "react-icons/bs";
 
-const Form = ({ submitHandler }) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const [boxHt, setBoxHt] = useState(40);
-
+const AddContent = ({ submitHandler }) => {
   const inputRef = useRef();
 
   const onFormSubmit = (e) => {
@@ -12,7 +9,6 @@ const Form = ({ submitHandler }) => {
 
     e.preventDefault();
     submitHandler(e);
-    setIsClicked(true);
     scrollHt.rows = 1;
   };
 
@@ -50,4 +46,4 @@ const Form = ({ submitHandler }) => {
   );
 };
 
-export default Form;
+export default AddContent;

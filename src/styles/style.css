@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Inter", sans-serif;
   max-width: 1920px;
   margin: 0 auto;
 }
@@ -133,20 +133,11 @@ body {
   padding: 0 10px;
 }
 
-.sidebar {
-  flex: 30%;
-  padding-right: 15px;
-  border-right: 1px solid rgba(176, 183, 176, 0.2);
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
 .addkeywords {
   display: flex;
-  align-self: center;
+  align-self: left;
   justify-content: space-between;
-  width: 100%;
+  width: 70%;
   border-bottom: 1px solid rgba(176, 183, 176, 0.2);
   padding-bottom: 10px;
 }
@@ -192,7 +183,6 @@ body {
 .outer-card {
   box-shadow: var(--shadow);
   border-radius: 10px;
-  position: relative;
 }
 
 .inner-card {
@@ -253,7 +243,8 @@ body {
   gap: 0.7rem;
 }
 
-.icon-group > div {
+.icon-group-tagline,
+.icon-group-actions {
   display: flex;
   align-items: center;
   justify-content: flex-end !important;
@@ -278,6 +269,7 @@ body {
 
 .cutoff-text-p {
   color: var(--text-color);
+  line-height: 1.8rem;
 }
 
 .cutoff-text-p:focus {
@@ -365,8 +357,6 @@ body {
   color: #24292e;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;

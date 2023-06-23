@@ -34,6 +34,7 @@ export const editCard = (
 
 export const expandCard = (cardRef, setDoRetract) => {
   const card = cardRef.current as HTMLElement;
+
   if (card.classList.contains("readable")) {
     card.classList.remove("readable");
     card.classList.remove("willEdit");
