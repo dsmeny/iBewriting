@@ -1,4 +1,9 @@
 {
+  "all": {
+    "id": 0,
+    "keyword": "all",
+    "color": "#454040"
+  },
   "temperature": {
     "id": 1,
     "keyword": "temperature",

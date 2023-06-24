@@ -1,0 +1,55 @@
+.keywordtags-container-list,
+.keywordtags-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.keytag-container,
+.keytag-header,
+.keytag-icon-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.keytag-header,
+.keytag-icon-list {
+  gap: 0.5rem;
+}
+
+.keytag-header {
+  font-size: 1.15rem;
+}
+
+.keytag-icon-list {
+  list-style-type: none;
+}
+
+.keywordtags-keyword-list {
+  color: var(--icon-color);
+  text-align: center;
+  position: relative;
+}
+
+.keywordtags-keyword-list h3 {
+  font-weight: 100;
+}
+
+.keywordtags-keyword-list:before {
+  content: "";
+  border: 1px solid var(--icon-color);
+  position: absolute;
+  left: 0px;
+  top: 9px;
+  width: 7.7rem;
+}
+
+.keywordtags-keyword-list:after {
+  content: "";
+  border: 1px solid var(--icon-color);
+  position: absolute;
+  right: 0px;
+  top: 9px;
+  width: 7.7rem;
+}

@@ -3,6 +3,7 @@ import { submitHandler } from "../util/_sidebar";
 import { DbContext } from "../util/DbProvider";
 import AddContent from "./AddContent";
 import AddKeyWords from "./AddKeyWords";
+import KeywordTags from "./KeywordTags";
 import classes from "./styles/Sidebar.module.css";
 
 const Sidebar = () => {
@@ -14,9 +15,7 @@ const Sidebar = () => {
         submitHandler={(event) => submitHandler(event, eventTriggerHandler)}
       />
       <AddKeyWords />
-      <div className={classes["sidebar-keyword-list"]}>
-        <h3>Keyword Tags</h3>
-      </div>
+      <KeywordTags />
     </div>
   );
 };

@@ -1,16 +1,27 @@
 import classes from "./styles/KeywordTags.module.css";
 import { firstLetterCaps } from "../util/_global";
+import { IoColorPaletteOutline } from "react-icons/io5";
+import { IoMdTrash, IoMdCreate } from "react-icons/io";
+
+const COUNT = 2;
 
 const KeywordTag = ({ keyword, color }) => {
   return (
-    <li>
-      <p style={{ color: `${color}` }}>{firstLetterCaps(keyword)}</p>
+    <li className={`${classes["keytag-container"]}`}>
+      <div className={`${classes["keytag-header"]}`}>
+        <p>{keyword === "all" ? 4 : COUNT}</p>
+        <p style={{ color: `${color}` }}>{firstLetterCaps(keyword)}</p>
+      </div>
       <div>
-        <ul>
-          <li>icon1</li>
-          <li>icon2</li>
-          <li>icon3</li>
-        </ul>
+        {keyword === "all" ? (
+          ""
+        ) : (
+          <ul className={`${classes["keytag-icon-list"]}`}>
+            <IoColorPaletteOutline className="icon-group-styling" />
+            <IoMdCreate className="icon-group-styling" />
+            <IoMdTrash className="icon-group-styling" />
+          </ul>
+        )}
       </div>
     </li>
   );

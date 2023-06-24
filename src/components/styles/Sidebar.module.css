@@ -6,31 +6,3 @@
   flex-direction: column;
   gap: 4rem;
 }
-
-.sidebar-keyword-list {
-  color: var(--icon-color);
-  text-align: center;
-  position: relative;
-}
-
-.sidebar-keyword-list h3 {
-  font-weight: 100;
-}
-
-.sidebar-keyword-list:before {
-  content: "";
-  border: 1px solid var(--icon-color);
-  position: absolute;
-  left: 0px;
-  top: 9px;
-  width: 7.7rem;
-}
-
-.sidebar-keyword-list:after {
-  content: "";
-  border: 1px solid var(--icon-color);
-  position: absolute;
-  right: 0px;
-  top: 9px;
-  width: 7.7rem;
-}
