@@ -183,6 +183,7 @@ body {
 .outer-card {
   box-shadow: var(--shadow);
   border-radius: 10px;
+  outline: none;
 }
 
 .icon-group-keywords {

@@ -41,8 +41,22 @@ const Card = ({ id, message }) => {
     setKeyword(key);
   };
 
+  const unHighlightCardHandler = (e) => {
+    const card = e.currentTarget;
+    card.style.outline = "none";
+  };
+
+  const highlightCardHandler = (e) => {
+    const card = e.currentTarget;
+    card.style.outline = "1px solid var(--bg-toggle-color)";
+  };
+
   return (
-    <div className="outer-card">
+    <div
+      className="outer-card"
+      onMouseDownCapture={highlightCardHandler}
+      onMouseLeave={unHighlightCardHandler}
+    >
       {showCard && (
         <div className="icon-group-keywords">
           <KeylistPopup
