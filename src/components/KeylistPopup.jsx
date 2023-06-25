@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { KeywordListContext } from "../util/LocalStoreProvider";
 import classes from "./styles/CardPopup.module.css";
 import Close from "./Close";
@@ -6,6 +6,8 @@ import Keyword from "./Keyword";
 
 const KeylistPopup = ({ showCardHandler, keywordHandler }) => {
   const { keywordList } = useContext(KeywordListContext);
+
+  const keywordListModi = useMemo(() => keywordList.slice(1), [keywordList]);
 
   return (
     <div className={`${classes["keylist-container"]}`}>
@@ -15,7 +17,7 @@ const KeylistPopup = ({ showCardHandler, keywordHandler }) => {
       </div>
       <div className={`${classes["keylist-options"]}`}>
         <ul className={`${classes["keylist-options-list"]}`}>
-          {keywordList.map((item) => (
+          {keywordListModi.map((item) => (
             <Keyword
               keyword={item.keyword}
               color={item.color}

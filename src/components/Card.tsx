@@ -12,6 +12,7 @@ import { FcExpand } from "react-icons/fc";
 import { GrClose } from "react-icons/gr";
 import { IoMdTrash, IoMdCreate, IoMdCopy } from "react-icons/io";
 import { IoDuplicateOutline } from "react-icons/io5";
+import { firstLetterCaps } from "../util/_global";
 import KeylistPopup from "./KeylistPopup";
 import useShowCard from "./hooks/useShowCard";
 import { RiPriceTag3Line } from "react-icons/ri";
@@ -67,13 +68,13 @@ const Card = ({ id, message }) => {
       )}
       <div className="inner-card">
         <div className="icon-group">
-          <div>
+          <div className="icon-group-tag">
             <RiPriceTag3Line
               className="icon-group-styling"
               onClick={showCardHandler}
             />
             <p style={{ color: `${keyword ? keyword.color : "fff"}` }}>
-              {keyword ? keyword.keyword : ""}
+              {keyword ? firstLetterCaps(keyword.keyword) : ""}
             </p>
           </div>
           <div className="icon-group-actions">
