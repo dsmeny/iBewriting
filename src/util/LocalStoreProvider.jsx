@@ -8,13 +8,17 @@ const LocalStoreProvider = ({ children }) => {
   const [keywordList, setKeywordList] = useState([]);
   const [init, setInit] = useState(false);
 
+  const initHandler = () => {
+    setInit((prev) => !prev);
+  };
+
   useEffect(() => {
     const parsedStorage = JSON.parse(localStoreHandler(KEYWORDS_STORE, "get"));
     const keywordListString = JSON.stringify(keywords);
 
     if (!parsedStorage) {
       localStoreHandler(KEYWORDS_STORE, "set", keywordListString);
-      setInit((prev) => !prev);
+      initHandler();
     }
 
     if (parsedStorage) {
@@ -28,6 +32,7 @@ const LocalStoreProvider = ({ children }) => {
 
   const context = {
     keywordList,
+    initHandler,
   };
 
   return (

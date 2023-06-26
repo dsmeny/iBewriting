@@ -2,26 +2,35 @@
   "all": {
     "id": 0,
     "keyword": "all",
-    "color": "#454040"
+    "color": "#454040",
+    "isActive": true
   },
   "temperature": {
     "id": 1,
     "keyword": "temperature",
-    "color": "#2567B5"
+    "color": "#2567B5",
+    "description": "Temperature, At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+    "isActive": true
   },
   "landlord": {
     "id": 2,
     "keyword": "landlord",
-    "color": "#7ACC5D"
+    "color": "#7ACC5D",
+    "description": "Landlord, At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+    "isActive": true
   },
   "neighbor": {
     "id": 3,
     "keyword": "neighbor",
-    "color": "#FFA800"
+    "color": "#FFA800",
+    "description": "Neighbor, At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+    "isActive": true
   },
   "internet": {
     "id": 4,
     "keyword": "internet",
-    "color": "#b3256c"
+    "color": "#b3256c",
+    "description": "Internet, At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+    "isActive": true
   }
 }

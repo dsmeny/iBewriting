@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classes from "./styles/KeywordTags.module.css";
 import { firstLetterCaps } from "../util/_global";
 import { IoColorPaletteOutline } from "react-icons/io5";
@@ -18,7 +19,9 @@ const KeywordTag = ({ keyword, color }) => {
         ) : (
           <ul className={`${classes["keytag-icon-list"]}`}>
             <IoColorPaletteOutline className="icon-group-styling" />
-            <IoMdCreate className="icon-group-styling" />
+            <Link to={`/${keyword}`}>
+              <IoMdCreate className="icon-group-styling" />
+            </Link>
             <IoMdTrash className="icon-group-styling" />
           </ul>
         )}

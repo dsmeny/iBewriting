@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Privacy from "./pages/Privacy";
 import Nav from "./components/Nav";
 import Sidebar from "./components/Sidebar";
+import KeywordPage from "./pages/KeywordPage";
 import { clear } from "./util/_cliDB.js";
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
                     />
                   }
                 />
+                <Route path="/:name" element={<KeywordPage />} />
                 <Route
                   path="/privacy-policy"
                   element={<Privacy clearBtnHandler={clearBtnHandler} />}

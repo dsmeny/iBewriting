@@ -52,3 +52,39 @@
 .keylist-icons {
   color: blue;
 }
+
+.keyword-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.keyword-card {
+  width: 40%;
+  padding: 10px;
+  background-color: var(--bg-card-color);
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.keyword-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.keyword-card-label p:nth-child(1) {
+  font-weight: 700;
+  color: var(--text-color);
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.keyword-card-description p {
+  line-height: 2rem;
+}
