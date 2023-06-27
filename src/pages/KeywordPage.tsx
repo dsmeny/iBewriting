@@ -2,18 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { KeywordListContext } from "../util/LocalStoreProvider";
 import { firstLetterCaps } from "../util/_global";
 import { useLocation } from "react-router-dom";
+import { keywordMatchHandler } from "../util/_keywordPage";
+import KeywordToggle from "../components/KeywordToggle";
 import classes from "../components/styles/CardPopup.module.css";
-import Toggle from "../components/Toggle";
-
-const keywordMatchHandler = (keywordArr, location, setKeyword) => {
-  if (keywordArr.some((entry) => entry.keyword === location)) {
-    setKeyword(() => keywordArr.find((entry) => entry.keyword === location));
-  }
-};
 
 const KeywordPage = () => {
   const { keywordList, initHandler } = useContext(KeywordListContext);
   const [keyword, setKeyword] = useState({});
+  const [isChecked, setIsChecked] = useState(true);
   const location = useLocation().pathname.slice(1);
 
   useEffect(() => {
@@ -34,9 +30,14 @@ const KeywordPage = () => {
                 {firstLetterCaps(keyword["keyword"])}
               </p>
             </div>
-            <div className={classes["keyword-card-label"]}>
-              <p>Use keyword</p>
-              <Toggle />
+            <div
+              className={`${classes["keyword-card-label"]} ${classes.flexEnd}`}
+            >
+              <p>Use Keyword</p>
+              <KeywordToggle
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
+              />
             </div>
           </div>
           <div className={classes["keyword-card-description"]}>

@@ -49,7 +49,7 @@ const Card = ({ id, message }) => {
 
   const highlightCardHandler = (e) => {
     const card = e.currentTarget;
-    card.style.outline = "1px solid var(--bg-toggle-color)";
+    card.style.outline = "2px solid var(--bg-toggle-color)";
   };
 
   return (
