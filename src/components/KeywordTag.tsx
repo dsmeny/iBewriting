@@ -27,7 +27,7 @@ const KeywordTag = ({ keyword, color }) => {
         ) : (
           <ul className={`${classes["keytag-icon-list"]}`}>
             {editColor ? (
-              <ColorPicker />
+              <ColorPicker currentColor="#919191" />
             ) : (
               <IoColorPaletteOutline
                 className="icon-group-styling"
