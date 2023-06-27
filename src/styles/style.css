@@ -170,6 +170,22 @@ body {
   background: white;
   padding-left: 30px;
   padding-right: 15px;
+  overflow-y: scroll;
+  padding-bottom: 10px;
+  height: 700px;
+}
+
+.home-content::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.home-content::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.home-content::-webkit-scrollbar-thumb {
+  background-color: #346a8533;
+  border-radius: 10px;
 }
 
 .nomessage {
