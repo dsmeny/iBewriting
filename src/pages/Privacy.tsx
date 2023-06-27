@@ -1,13 +1,15 @@
-import { useEffect } from "react";
-import classes from "./Privacy.module.css";
+import { Link } from "react-router-dom";
+import { IoClose } from "react-icons/io5";
+import classes from "./styles/Privacy.module.css";
 
-const Privacy = ({ clearBtnHandler }) => {
-  useEffect(() => {
-    clearBtnHandler(false);
-  }, []);
-
+const Privacy = () => {
   return (
     <section className={classes.container}>
+      <div className={classes["container-icon"]}>
+        <Link to="/">
+          <IoClose className={classes["container-icon-close"]} />
+        </Link>
+      </div>
       <div className={classes["container-inner"]}>
         <h3>Privacy Policy for Spinelesstwits</h3>
         <p>

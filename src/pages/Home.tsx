@@ -24,7 +24,7 @@ const Home = ({ showClearBtn, clearBtnHandler }) => {
   }, [eventTrigger, showClearBtn]);
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <div className="home-content">
         {!dbState && <div className="nomessage">No notes</div>}
         {dbState &&

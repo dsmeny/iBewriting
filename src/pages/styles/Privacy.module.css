@@ -8,6 +8,16 @@
   padding: 10px;
 }
 
+.container-icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container-icon-close {
+  font-size: 2.5rem;
+  color: var(--icon-color);
+}
+
 .container-inner {
   word-wrap: break-word;
   display: flex;
