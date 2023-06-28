@@ -2,7 +2,8 @@ import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DbProvider from "./util/DbProvider";
-import LocalStoreProvider from "./util/LocalStoreProvider";
+import KeywordListProvider from "./util/KeywordListProvider";
+import SettingsProvider from "./util/SettingsProvider";
 
 import Home from "./pages/Home";
 import Privacy from "./pages/Privacy";
@@ -26,30 +27,32 @@ const App = () => {
   return (
     <BrowserRouter>
       <DbProvider>
-        <LocalStoreProvider>
-          <div className="container">
-            <Nav clearHandler={clearHandler} showClearBtn={showClearBtn} />
-            <div className="container-inner">
-              <Sidebar />
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <Home
-                      showClearBtn={showClearBtn}
-                      clearBtnHandler={clearBtnHandler}
-                    />
-                  }
-                />
-                <Route path="/:name" element={<KeywordPage />} />
-                <Route
-                  path="/privacy-policy"
-                  element={<Privacy clearBtnHandler={clearBtnHandler} />}
-                />
-              </Routes>
+        <SettingsProvider>
+          <KeywordListProvider>
+            <div className="container">
+              <Nav clearHandler={clearHandler} showClearBtn={showClearBtn} />
+              <div className="container-inner">
+                <Sidebar />
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <Home
+                        showClearBtn={showClearBtn}
+                        clearBtnHandler={clearBtnHandler}
+                      />
+                    }
+                  />
+                  <Route path="/:name" element={<KeywordPage />} />
+                  <Route
+                    path="/privacy-policy"
+                    element={<Privacy clearBtnHandler={clearBtnHandler} />}
+                  />
+                </Routes>
+              </div>
             </div>
-          </div>
-        </LocalStoreProvider>
+          </KeywordListProvider>
+        </SettingsProvider>
       </DbProvider>
     </BrowserRouter>
   );

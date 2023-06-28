@@ -18,8 +18,14 @@
   gap: 0.5rem;
 }
 
-.keytag-header {
+.keytag-header,
+.keytag-header-btn {
   font-size: 1.15rem;
+}
+
+.keytag-header-btn {
+  border: none;
+  background-color: transparent;
 }
 
 .keytag-icon-list {

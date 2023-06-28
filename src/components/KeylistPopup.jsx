@@ -1,5 +1,5 @@
 import { useContext, useMemo } from "react";
-import { KeywordListContext } from "../util/LocalStoreProvider";
+import { KeywordListContext } from "../util/KeywordListProvider";
 import classes from "./styles/CardPopup.module.css";
 import Close from "./Close";
 import Keyword from "./Keyword";

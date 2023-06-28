@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { KeywordListContext } from "../util/LocalStoreProvider";
+import { KeywordListContext } from "../util/KeywordListProvider";
 import { firstLetterCaps } from "../util/_global";
 import { useLocation } from "react-router-dom";
 import { keywordMatchHandler } from "../util/_keywordPage";

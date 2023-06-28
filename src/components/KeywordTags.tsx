@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { KeywordListContext } from "../util/LocalStoreProvider";
+import { KeywordListContext } from "../util/KeywordListProvider";
 import classes from "./styles/KeywordTags.module.css";
 import KeywordTag from "./KeywordTag";
 

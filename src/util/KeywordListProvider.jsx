@@ -4,7 +4,7 @@ import keywords from "../keywords.json";
 
 export const KeywordListContext = createContext();
 
-const LocalStoreProvider = ({ children }) => {
+const KeywordListProvider = ({ children }) => {
   const [keywordList, setKeywordList] = useState([]);
   const [init, setInit] = useState(false);
 
@@ -42,4 +42,4 @@ const LocalStoreProvider = ({ children }) => {
   );
 };
 
-export default LocalStoreProvider;
+export default KeywordListProvider;
