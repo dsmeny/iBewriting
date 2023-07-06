@@ -7,9 +7,14 @@ export const KeywordListContext = createContext();
 const KeywordListProvider = ({ children }) => {
   const [keywordList, setKeywordList] = useState([]);
   const [init, setInit] = useState(false);
+  const [showKeyCard, setShowKeyCard] = useState(false);
 
   const initHandler = () => {
     setInit((prev) => !prev);
+  };
+
+  const showKeyCardHandler = () => {
+    setShowKeyCard((prev) => !prev);
   };
 
   useEffect(() => {
@@ -33,6 +38,8 @@ const KeywordListProvider = ({ children }) => {
   const context = {
     keywordList,
     initHandler,
+    showKeyCard,
+    showKeyCardHandler,
   };
 
   return (

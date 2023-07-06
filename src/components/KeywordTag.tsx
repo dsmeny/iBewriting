@@ -1,6 +1,7 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { SettingsContext } from "../util/SettingsProvider";
-import { Link } from "react-router-dom";
+import { KeywordListContext } from "../util/KeywordListProvider.jsx";
+import { Link, useLocation } from "react-router-dom";
 import classes from "./styles/KeywordTags.module.css";
 import { firstLetterCaps } from "../util/_global";
 import { IoColorPaletteOutline } from "react-icons/io5";
@@ -11,11 +12,15 @@ const COUNT = 2;
 
 const KeywordTag = ({ keyword, color }) => {
   const { settings } = useContext(SettingsContext);
+  const { showKeyCard, showKeyCardHandler } = useContext(KeywordListContext);
   const [editColor, setEditColor] = useState(false);
+
+  const location = useLocation().pathname.replace(/\//, "");
   const { tags } = settings;
 
+  const editRef = useRef();
+
   const editColorHandler = () => {
-    console.log("fired!");
     setEditColor((prev) => !prev);
   };
 
@@ -39,7 +44,10 @@ const KeywordTag = ({ keyword, color }) => {
         ) : (
           <ul className={`${classes["keytag-icon-list"]}`}>
             {editColor ? (
-              <ColorPicker currentColor="#919191" />
+              <ColorPicker
+                currentColor="#919191"
+                editColorHandler={editColorHandler}
+              />
             ) : (
               <button onClick={editColorHandler} disabled={!tags}>
                 <IoColorPaletteOutline className="icon-group-styling" />
@@ -47,7 +55,16 @@ const KeywordTag = ({ keyword, color }) => {
             )}
             {tags ? (
               <Link to={`/${keyword}`}>
-                <IoMdCreate className="icon-group-styling" />
+                <IoMdCreate
+                  name={location}
+                  className={`${
+                    keyword === location && showKeyCard
+                      ? classes.greencolor
+                      : "icon-group-styling"
+                  }`}
+                  onClick={showKeyCardHandler}
+                  ref={editRef}
+                />
               </Link>
             ) : (
               <IoMdCreate

@@ -1,3 +1,7 @@
+.keywordtags-container-list {
+  position: relative;
+}
+
 .keywordtags-container-list,
 .keywordtags-container {
   display: flex;
@@ -58,4 +62,16 @@
   right: 0px;
   top: 9px;
   width: 7.7rem;
+}
+
+.greencolor {
+  color: green;
+  font-size: 1.5rem;
+  transition: all 1s ease;
+}
+
+.greencolor:hover {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  padding: 2px;
 }
