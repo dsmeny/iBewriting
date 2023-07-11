@@ -13,7 +13,7 @@ const KeywordListProvider = ({ children }) => {
     setInit((prev) => !prev);
   };
 
-  const showKeyCardHandler = () => {
+  const showKeyCardHandler = (e) => {
     setShowKeyCard((prev) => !prev);
   };
 

@@ -1,4 +1,4 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useContext } from "react";
 import { SettingsContext } from "../util/SettingsProvider";
 import { KeywordListContext } from "../util/KeywordListProvider.jsx";
 import { Link, useLocation } from "react-router-dom";
@@ -17,8 +17,6 @@ const KeywordTag = ({ keyword, color }) => {
 
   const location = useLocation().pathname.replace(/\//, "");
   const { tags } = settings;
-
-  const editRef = useRef();
 
   const editColorHandler = () => {
     setEditColor((prev) => !prev);
@@ -54,17 +52,12 @@ const KeywordTag = ({ keyword, color }) => {
               </button>
             )}
             {tags ? (
-              <Link to={`/${keyword}`}>
-                <IoMdCreate
-                  name={location}
-                  className={`${
-                    keyword === location && showKeyCard
-                      ? classes.greencolor
-                      : "icon-group-styling"
-                  }`}
-                  onClick={showKeyCardHandler}
-                  ref={editRef}
-                />
+              <Link
+                to={`/${keyword}`}
+                onClick={showKeyCardHandler}
+                className={`${classes.editIcons}`}
+              >
+                <IoMdCreate name={location} className="icon-group-styling" />
               </Link>
             ) : (
               <IoMdCreate

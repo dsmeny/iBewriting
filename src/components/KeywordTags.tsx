@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { KeywordListContext } from "../util/KeywordListProvider";
 import classes from "./styles/KeywordTags.module.css";
 import KeywordTag from "./KeywordTag";
 
 const KeywordTags = () => {
   const { keywordList } = useContext(KeywordListContext);
+
   return (
     <div className={`${classes["keywordtags-container"]}`}>
       <div className={classes["keywordtags-keyword-list"]}>
