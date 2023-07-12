@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import classes from "./styles/Privacy.module.css";
 
-const Privacy = () => {
+const Privacy = ({ showPrivacyHandler }) => {
   return (
     <section className={classes.container}>
       <div className={classes["container-icon"]}>
-        <Link to="/">
+        <Link to="/" onClick={showPrivacyHandler}>
           <IoClose className={classes["container-icon-close"]} />
         </Link>
       </div>

@@ -21,6 +21,10 @@ body {
   margin: 0 auto;
 }
 
+.overflow-y {
+  overflow-y: scroll;
+}
+
 .head {
   height: 100px;
   background-color: var(--bg-nav-color);
@@ -29,6 +33,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
+  width: 100%;
 }
 
 .head-btns {
@@ -123,7 +128,9 @@ body {
   position: relative;
   display: flex;
   gap: 1rem;
+  justify-content: space-between;
   flex-direction: column;
+  align-items: flex-end;
   height: 100vh;
 }
 
@@ -131,6 +138,7 @@ body {
   display: flex;
   flex: 1;
   padding: 0 10px;
+  width: 100%;
 }
 
 .addkeywords {
@@ -170,7 +178,6 @@ body {
   background: white;
   padding-left: 30px;
   padding-right: 15px;
-  overflow-y: scroll;
   padding-bottom: 10px;
 }
 
@@ -433,13 +440,11 @@ body {
 }
 
 .privacy {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
   z-index: 9999;
   background: white;
   text-align: right;
   padding: 5px;
+  width: 100%;
 }
 
 .privacy a {

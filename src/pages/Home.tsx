@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { DbContext } from "../util/DbProvider";
 import Card from "../components/Card";
 import { keys, values } from "../util/_cliDB";
@@ -25,7 +24,7 @@ const Home = ({ showClearBtn, clearBtnHandler }) => {
 
   return (
     <div style={{ width: "100%" }}>
-      <div className="home-content">
+      <div className={`home-content ${!dbState ? "" : "overflow-y"}`}>
         {!dbState && <div className="nomessage">No notes</div>}
         {dbState &&
           dbState.messages.map((message, index) => (
@@ -36,10 +35,6 @@ const Home = ({ showClearBtn, clearBtnHandler }) => {
             />
           ))}
       </div>
-
-      <footer className="privacy">
-        <Link to="/privacy-policy">privacy policy</Link>
-      </footer>
     </div>
   );
 };
