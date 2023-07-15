@@ -1,5 +1,6 @@
 export const SETTINGS_STORE = "settings";
 export const KEYWORDS_STORE = "keywords";
+export const KEYWORD_STORE = "keyword";
 
 const getDateTimeStamp = () => {
   let options = {

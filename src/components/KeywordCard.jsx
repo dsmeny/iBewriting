@@ -4,6 +4,7 @@ import KeywordToggle from "./KeywordToggle";
 import classes from "./styles/CardPopup.module.css";
 
 const KeywordCard = ({ keyword, isChecked, setIsChecked }) => {
+  console.log("keyword: ", keyword);
   return (
     <div className={classes["keyword-card-container"]}>
       {keyword["keyword"] ? (

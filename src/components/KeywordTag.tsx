@@ -10,9 +10,9 @@ import ColorPicker from "./ColorPicker";
 
 const COUNT = 2;
 
-const KeywordTag = ({ keyword, color }) => {
+const KeywordTag = ({ keyname, color }) => {
   const { settings } = useContext(SettingsContext);
-  const { showKeyCard, showKeyCardHandler } = useContext(KeywordListContext);
+  const { keyword, setKeywordHandler } = useContext(KeywordListContext);
   const [editColor, setEditColor] = useState(false);
 
   const location = useLocation().pathname.replace(/\//, "");
@@ -26,18 +26,18 @@ const KeywordTag = ({ keyword, color }) => {
     <li className={`${classes["keytag-container"]}`}>
       <div className={`${classes["keytag-header"]}`}>
         <p style={{ opacity: `${tags ? "1" : "0.3"}` }}>
-          {keyword === "all" ? 4 : COUNT}
+          {keyname === "all" ? 4 : COUNT}
         </p>
         <input
           type="button"
           className={`${classes["keytag-header-btn"]}`}
           style={{ color: `${color}`, opacity: `${tags ? "1" : "0.3"}` }}
-          value={firstLetterCaps(keyword)}
+          value={firstLetterCaps(keyname)}
           disabled={tags}
         />
       </div>
       <div>
-        {keyword === "all" ? (
+        {keyname === "all" ? (
           ""
         ) : (
           <ul className={`${classes["keytag-icon-list"]}`}>
@@ -53,11 +53,15 @@ const KeywordTag = ({ keyword, color }) => {
             )}
             {tags ? (
               <Link
-                to={`/${keyword}`}
-                onClick={showKeyCardHandler}
+                to={`/${keyname}`}
                 className={`${classes.editIcons}`}
+                onClick={() => {
+                  setKeywordHandler(
+                    keyword.keyword !== location ? keyname : location
+                  );
+                }}
               >
-                <IoMdCreate name={location} className="icon-group-styling" />
+                <IoMdCreate name={keyname} className="icon-group-styling" />
               </Link>
             ) : (
               <IoMdCreate

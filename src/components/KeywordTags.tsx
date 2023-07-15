@@ -13,7 +13,7 @@ const KeywordTags = () => {
       </div>
       <ul className={`${classes["keywordtags-container-list"]}`}>
         {keywordList.map((item) => (
-          <KeywordTag keyword={item.keyword} color={item.color} key={item.id} />
+          <KeywordTag key={item.id} color={item.color} keyname={item.keyword} />
         ))}
       </ul>
     </div>
