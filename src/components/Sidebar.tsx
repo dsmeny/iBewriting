@@ -14,8 +14,8 @@ const Sidebar = () => {
       <AddContent
         submitHandler={(event) => submitHandler(event, eventTriggerHandler)}
       />
-      <AddKeyWords />
-      <KeywordTags />
+      {/* <AddKeyWords />
+      <KeywordTags /> */}
     </div>
   );
 };

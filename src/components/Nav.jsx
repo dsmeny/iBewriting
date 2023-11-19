@@ -19,7 +19,7 @@ const Nav = ({ clearHandler, showClearBtn }) => {
       </div>
       <div className="head-btns">
         {showClearBtn && <Button text="clear" onClick={clearHandler} />}
-        <FiSettings className="head-btns-setting" onClick={showCardHandler} />
+        {/* <FiSettings className="head-btns-setting" onClick={showCardHandler} /> */}
       </div>
     </header>
   );
