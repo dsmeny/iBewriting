@@ -31,7 +31,7 @@ const AddContent = ({ submitHandler }) => {
           name="name"
           autoFocus
           required
-          placeholder="Store your content"
+          placeholder="Store your content privately"
           onChange={changeHandler}
           ref={inputRef}
         ></textarea>
