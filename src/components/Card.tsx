@@ -69,10 +69,10 @@ const Card = ({ id, message }) => {
       <div className="inner-card">
         <div className="icon-group">
           <div className="icon-group-tag">
-            <RiPriceTag3Line
+            {/* <RiPriceTag3Line
               className="icon-group-styling"
               onClick={showCardHandler}
-            />
+            /> */}
             <p style={{ color: `${keyword ? keyword.color : "fff"}` }}>
               {keyword ? firstLetterCaps(keyword.keyword) : ""}
             </p>
