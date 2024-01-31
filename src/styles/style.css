@@ -141,6 +141,12 @@ body {
   width: 100%;
 }
 
+@media screen and (max-width: 1200px) {
+  .container-inner {
+    flex-direction: column;
+  }
+}
+
 .addkeywords {
   display: flex;
   align-self: left;
